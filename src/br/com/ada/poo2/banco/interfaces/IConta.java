@@ -1,6 +1,6 @@
-package interfaces;
+package br.com.ada.poo2.banco.interfaces;
 
-import conta.Conta;
+import br.com.ada.poo2.banco.models.conta.Conta;
 
 public interface IConta {
 
@@ -8,4 +8,5 @@ public interface IConta {
     void depositar(double valor);
     void transferir(double valor, Conta contaDestino);
     void checarSaldo();
+    void investir();
 }

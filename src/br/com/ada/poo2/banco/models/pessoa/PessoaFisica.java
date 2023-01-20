@@ -1,8 +1,10 @@
-package pessoa;
+package br.com.ada.poo2.banco.models.pessoa;
+
+import br.com.ada.poo2.banco.interfaces.IRendimento;
 
 import java.util.List;
 
-public class PessoaFisica extends Pessoa {
+public class PessoaFisica extends Pessoa implements IRendimento {
 
     private String CPF;
 
@@ -16,5 +18,10 @@ public class PessoaFisica extends Pessoa {
 
     public void setCPF(String CPF) {
         this.CPF = CPF;
+    }
+
+    @Override
+    public void render() {
+
     }
 }

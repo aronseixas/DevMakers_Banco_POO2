@@ -1,4 +1,4 @@
-package conta;
+package br.com.ada.poo2.banco.models.conta;
 
 public class ContaCorrente extends Conta {
 
