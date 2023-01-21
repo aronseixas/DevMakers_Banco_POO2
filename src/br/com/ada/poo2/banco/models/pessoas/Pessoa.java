@@ -9,7 +9,8 @@ public abstract class Pessoa {
     private String nome;
     private List<Conta> contas;
 
-    protected Pessoa(String nome, List<Conta> contas) {
+
+    public Pessoa(String nome, List<Conta> contas) {
         this.nome = nome;
         this.contas = contas;
     }
@@ -25,8 +26,5 @@ public abstract class Pessoa {
     public List<Conta> getContas() {
         return contas;
     }
-
-    public void setContas(List<Conta> contas) {
-        this.contas = contas;
-    }
 }
+
