@@ -1,4 +1,4 @@
-package conta;
+package br.com.ada.poo2.banco.models.contas;
 
 public class ContaPoupanca extends Conta {
 
