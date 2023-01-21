@@ -1,8 +1,9 @@
-package conta;
+package br.com.ada.poo2.banco.models.contas;
 
-public class ContaCorrente extends Conta {
+public class ContaInvestimento extends Conta {
 
-    public ContaCorrente(int numero, int senha, double saldo, double taxaRendimento) {
+
+    public ContaInvestimento(int numero, int senha, double saldo, double taxaRendimento) {
         super(numero, senha, saldo, taxaRendimento);
     }
 

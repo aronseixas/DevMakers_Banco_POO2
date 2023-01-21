@@ -1,6 +1,6 @@
-package interfaces;
+package br.com.ada.poo2.banco.interfaces;
 
-import conta.Conta;
+import br.com.ada.poo2.banco.models.contas.Conta;
 
 public interface IConta {
 

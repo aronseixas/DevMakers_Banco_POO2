@@ -1,4 +1,4 @@
-package pessoa;
+package br.com.ada.poo2.banco.models.pessoas;
 
 import java.util.List;
 

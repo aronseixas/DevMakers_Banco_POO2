@@ -1,6 +1,6 @@
-package pessoa;
+package br.com.ada.poo2.banco.models.pessoas;
 
-import conta.Conta;
+import br.com.ada.poo2.banco.models.contas.Conta;
 
 import java.util.List;
 

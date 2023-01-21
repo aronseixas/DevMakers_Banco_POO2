@@ -1,6 +1,6 @@
-package conta;
+package br.com.ada.poo2.banco.models.contas;
 
-import interfaces.IConta;
+import br.com.ada.poo2.banco.interfaces.IConta;
 
 public abstract class Conta implements IConta {
 
