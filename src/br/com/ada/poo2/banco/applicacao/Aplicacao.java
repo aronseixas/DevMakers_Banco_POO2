@@ -1,5 +1,8 @@
 package br.com.ada.poo2.banco.applicacao;
 
+import br.com.ada.poo2.banco.controllers.menu.MenuInicial;
+import br.com.ada.poo2.banco.controllers.menu.MenuOperacoes;
+import br.com.ada.poo2.banco.models.banco.Banco;
 import br.com.ada.poo2.banco.models.contas.Conta;
 import br.com.ada.poo2.banco.models.contas.ContaCorrente;
 import br.com.ada.poo2.banco.models.pessoas.Pessoa;
@@ -13,22 +16,29 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Aplicacao {
+    public Banco banco = new Banco();
+    public MenuInicial menuInicial = new MenuInicial();
+
+    public MenuOperacoes menuOperacoes = new MenuOperacoes();
+
     public static void main(String[] args) {
+        Aplicacao aplicacao = new Aplicacao();
+        aplicacao.exibirMenuInicial();
 
-        Scanner scan = new Scanner(System.in);
-
-
-        List<Conta> contas = new ArrayList<>();
-
-        System.out.print("NOME: ");
-        String nome = scan.nextLine();
-        ContaCorrente contaCorrente = new ContaCorrente(1, 11, 1000, new RendimentoPF(), new TaxasPF());
-        contas.add(contaCorrente);
-
-        PessoaFisica fulano = new PessoaFisica(nome, contas, "1234");
-
-        fulano.getContas().get(0).sacar(100);
-        System.out.println(fulano.getContas().get(0).getSaldo());
+//        Scanner scan = new Scanner(System.in);
+//
+//
+//        List<Conta> contas = new ArrayList<>();
+//
+//        System.out.print("NOME: ");
+//        String nome = scan.nextLine();
+//        ContaCorrente contaCorrente = new ContaCorrente(1, 11, 1000, new RendimentoPF(), new TaxasPF());
+//        contas.add(contaCorrente);
+//
+//        PessoaFisica fulano = new PessoaFisica(nome, contas, "1234");
+//
+//        fulano.getContas().get(0).sacar(100);
+//        System.out.println(fulano.getContas().get(0).getSaldo());
 
 /*
         ContaCorrente contaCorrente = new ContaCorrente(1, 11, 1000, new RendimentoPF(), new TaxasPF());
@@ -60,5 +70,9 @@ public class Aplicacao {
         ContaInvestimento contaInvestimentoPJ = new ContaInvestimento(123, 234, 100, new RendimentoPJ());
         contaInvestimentoPJ.depositar(200);
 */
+    }
+
+    public void exibirMenuInicial() {
+        menuInicial.mostrarOpcoesMenu();
     }
 }
