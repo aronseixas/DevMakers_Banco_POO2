@@ -9,14 +9,12 @@ import java.util.Scanner;
 public class MenuOperacoes {
 //TODO apresentar nome de usuário e qual a conta logada;
 //TODO limitas as operações ao tipo de conta;
-    //public void exibirOpcoes(ETipoConta tipoDeConta) {
-
     static Scanner menu = new Scanner(System.in);
     public static void iniciarMenuOperacoes() {
 
         while (true) {
 
-            System.out.print("##---------------Bem-vindo à sua conta----------------##\n\n");
+            System.out.print("##---------------Bem-vindo à sua conta---------------##\n\n");
             System.out.print("|-----------------------------------------------------|\n");
             System.out.print("| Opção 1 - Consultar saldo                           |\n");
             System.out.print("| Opção 2 - Sacar                                     |\n");
@@ -67,4 +65,3 @@ public class MenuOperacoes {
         }
     }
 }
-//}
