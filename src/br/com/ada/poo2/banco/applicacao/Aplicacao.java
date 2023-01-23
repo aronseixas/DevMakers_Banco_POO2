@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Aplicacao {
-    public Banco banco = new Banco();
+    public static Banco banco = new Banco();
     public MenuInicial menuInicial = new MenuInicial();
 
     public MenuOperacoes menuOperacoes = new MenuOperacoes();

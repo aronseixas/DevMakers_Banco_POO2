@@ -53,18 +53,16 @@ public class MenuOperacoes {
                     System.out.println("\nOpção Investir\n");
                     Investir.executarInvestimento();
                     break;
-                }
-                case "5" -> {
+                case "5" :
                     System.out.println("\nOpção Transferir\n");
                     Transferir.executarTransferencia();
                     break;
-                }
-                case "6" -> {
+                case "6" :
                     System.out.println("\nOpção Escolher conta\n");
                     EscolherConta.escolherConta();
                     break;
-                }
-                default -> System.out.println("\nOpção Inválida!");
+                default :
+                    System.out.println("\nOpção Inválida!");
             }
         }
     }

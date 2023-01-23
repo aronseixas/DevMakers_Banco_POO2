@@ -14,6 +14,8 @@ import br.com.ada.poo2.banco.models.taxas.TaxasPF;
 import java.util.ArrayList;
 import java.util.List;
 
+import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;
+
 
 public class CadastroPessoaFisica implements ICadastroUsuario {
 

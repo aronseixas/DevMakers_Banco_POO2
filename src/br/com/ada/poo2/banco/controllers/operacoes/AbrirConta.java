@@ -60,8 +60,9 @@ public class AbrirConta {
         receberIdentificadorDaPessoa();
         System.out.println("Qual o nome?");
         nome = scanner.nextLine();
-        System.out.println("Qual o senha?");
+        System.out.println("Qual a senha?");
         senha = Integer.parseInt(scanner.nextLine());
+        //TODO fazer um try catch para o tipo de entrada.
     }
 
     private void receberIdentificadorDaPessoa() {
