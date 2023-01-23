@@ -1,5 +1,6 @@
 package br.com.ada.poo2.banco.controllers.operacoes;
 
+import br.com.ada.poo2.banco.controllers.menu.MenuOperacoes;
 import br.com.ada.poo2.banco.models.pessoas.Pessoa;
 
 public class Logar {
@@ -26,5 +27,7 @@ public class Logar {
         //banco.setLogarUsuario(Pessoa)
         //EscolherConta.escolherConta();
             //Direcionar usuário para que ele escolha qual conta utilizar
+        MenuOperacoes.iniciarMenuOperacoes();
     }
+
 }
