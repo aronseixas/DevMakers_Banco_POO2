@@ -73,6 +73,6 @@ public class Aplicacao {
     }
 
     public void exibirMenuInicial() {
-        menuInicial.mostrarOpcoesMenu();
+        MenuInicial.iniciarPrimeiroMenu();
     }
 }

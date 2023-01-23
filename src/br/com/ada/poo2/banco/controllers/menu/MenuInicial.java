@@ -8,37 +8,38 @@ import java.util.Scanner;
 
 public class MenuInicial {
 
-    Scanner menu = new Scanner(System.in);
-    Aplicacao banco = new Aplicacao();
+    static Scanner menu = new Scanner(System.in);
+    public static void iniciarPrimeiroMenu(){
 
-    while (true) {
+        while (true) {
 
-        System.out.print("##------------Bem-vindo ao BANCO-------------##\n\n");
-        System.out.print("|----------------------------------------------------|\n");
-        System.out.print("| Opção 1 - Abrir uma nova conta                     |\n");
-        System.out.print("| Opção 2 - Acessar sua conta                        |\n");
-        System.out.print("| Opção 3 - Fechar                                   |\n");
-        System.out.print("|----------------------------------------------------|\n");
-        System.out.print("Digite uma opção: ");
+            System.out.print("##------------Bem-vindo ao BANCO-------------##\n\n");
+            System.out.print("|----------------------------------------------------|\n");
+            System.out.print("| Opção 1 - Abrir uma nova conta                     |\n");
+            System.out.print("| Opção 2 - Acessar sua conta                        |\n");
+            System.out.print("| Opção 3 - Fechar                                   |\n");
+            System.out.print("|----------------------------------------------------|\n");
+            System.out.print("Digite uma opção: ");
 
-        String opcao = menu.next();
+            String opcao = menu.next();
 
-        if (opcao.equals("3")) {
-            System.out.print("\nAté logo!");
-            menu.close();
-            break;
-        }
-
-        switch (opcao) {
-            case "1" -> {
-                System.out.println("\nOpção abrir uma conta \n");
-                AbrirConta.abrirConta();
+            if (opcao.equals("3")) {
+                System.out.print("\nAté logo!");
+                menu.close();
+                break;
             }
-            case "2" -> {
-                System.out.println("\nOpção acessar sua conta\n");
-                Logar.pedirIdentificadorCliente();
+
+            switch (opcao) {
+                case "1" -> {
+                    System.out.println("\nOpção abrir uma conta \n");
+                    AbrirConta.abrirConta();
+                }
+                case "2" -> {
+                    System.out.println("\nOpção acessar sua conta\n");
+                    Logar.pedirIdentificadorCliente();
+                }
+                default -> System.out.println("\nOpção Inválida!");
             }
-            default -> System.out.println("\nOpção Inválida!");
         }
     }
 }
