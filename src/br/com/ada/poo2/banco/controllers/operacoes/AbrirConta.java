@@ -1,6 +1,7 @@
 package br.com.ada.poo2.banco.controllers.operacoes;
 
 public class AbrirConta {
+
     public void definirTipoDePessoa() {
         //Usar enum EPessoa
     }
@@ -10,7 +11,7 @@ public class AbrirConta {
         //Inicializar uma Pessoa Física ou Jurídica
     }
 
-    public void abrirConta() {
+    public static void abrirConta() {
         //Abrir todas as Contas de ACORDO COM TIPO DE PESSOA
             // (PessoaFisica - Poupança, Corrente, Investimento)
             // (PessoaJuridica - Corrente, Investimento)
