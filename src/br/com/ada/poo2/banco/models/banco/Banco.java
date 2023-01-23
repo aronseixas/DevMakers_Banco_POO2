@@ -10,12 +10,12 @@ import java.util.Map;
 public class Banco {
     Map<Conta, Pessoa> mapaDeContas = new HashMap<>();
     //Pode ser talvez um map<Número de Conta, Pessoa>
-
     Map<String, Pessoa> mapaDeClientes = new HashMap<>();
     List<Pessoa> listaDeClientes;
+    //TODO escolher entre fazer uma lista de cliente ou um mapa
     Pessoa usuarioLogado;
 
-    //Deixar pré-carregado uma Pessoa Física e uma Pessoa Jurídica com cada tipo de conta para testes
+    //TODO Deixar pré-carregado uma Pessoa Física e uma Pessoa Jurídica com cada tipo de conta para testes
 
 
     public void getListaDeContas() {
@@ -32,10 +32,6 @@ public class Banco {
 
     public Map<Conta, Pessoa> getMapaDeContas() {
         return mapaDeContas;
-    }
-
-    public List<Pessoa> getListaDeClientes() {
-        return listaDeClientes;
     }
 
     public Map<String, Pessoa> getMapaDeClientes() {

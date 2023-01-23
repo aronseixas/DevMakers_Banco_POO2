@@ -1,6 +1,5 @@
 package br.com.ada.poo2.banco.controllers.menu;
 
-import br.com.ada.poo2.banco.applicacao.Aplicacao;
 import br.com.ada.poo2.banco.controllers.operacoes.AbrirConta;
 import br.com.ada.poo2.banco.controllers.operacoes.Logar;
 
@@ -33,11 +32,12 @@ public class MenuInicial {
                 case "1" :
                     System.out.println("\nOpção abrir uma conta \n");
                     AbrirConta abrirConta = new AbrirConta();
-                    abrirConta.abrirConta();
+                    abrirConta.executar();
                     break;
                     case "2" :
                     System.out.println("\nOpção acessar sua conta\n");
-                    Logar.pedirIdentificadorCliente();
+                    Logar logar = new Logar();
+                    logar.executar();
                     break;
                 default:
                     System.out.println("\nOpção Inválida!");

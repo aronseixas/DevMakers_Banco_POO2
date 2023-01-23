@@ -15,11 +15,11 @@ public class AbrirConta {
     ICadastroUsuario cadastradorDeUsuario;
     List<Conta> listaDeContasDoUsuario;
     Pessoa usuario;
-    int senha, escolhaOpcaoMenu;
-    String nome, identificador;
+    int senha;
+    String nome, identificador, opcaoDePessoa;
 
     static Scanner scanner = new Scanner(System.in);
-    public void abrirConta() {
+    public void executar() {
         exibirOpcoesDePessoa();
         criarCadastroDeCliente();
         receberDadosCadastrais();
@@ -30,48 +30,40 @@ public class AbrirConta {
         logarUsario();
     }
     private void exibirOpcoesDePessoa() {
-        System.out.println("Qual tipo de conta você deseja abrir");
-        System.out.println("1 - Pessoa Física");
-        System.out.println("2 - Pessoa Jurídica");
-        try {
-            escolhaOpcaoMenu = Integer.parseInt(scanner.nextLine());
-        } catch (NumberFormatException e) {
-            System.out.println("Por favor, escolha um número válido");
-        }
+        System.out.println("Qual tipo de conta você deseja abrir:");
+        System.out.println("Opção 1 - Pessoa Física");
+        System.out.println("Opção 2 - Pessoa Jurídica");
+        opcaoDePessoa = scanner.next();
     }
 
     private void criarCadastroDeCliente() {
-            switch (escolhaOpcaoMenu) {
-                case 1:
+            switch (opcaoDePessoa) {
+                case "1" :
                     tipoDePessoa = EPessoa.FISICA;
                     cadastradorDeUsuario = new CadastroPessoaFisica();
                     break;
-                case 2:
+                case "2" :
                     tipoDePessoa = EPessoa.JURIDICA;
                     cadastradorDeUsuario = new CadastroPessoaJuridica();
                     break;
                 default:
-                    System.out.println("Por favor, escolha um número válido");
+                    System.out.println("Erro na hora de gerar os cadastradores de usuário");
             }
     }
 
-
     private void receberDadosCadastrais() {
-        receberIdentificadorDaPessoa();
-        System.out.println("Qual o nome?");
-        nome = scanner.nextLine();
-        System.out.println("Qual a senha?");
-        senha = Integer.parseInt(scanner.nextLine());
-        //TODO fazer um try catch para o tipo de entrada.
+        receberIdentificadorDoUsuario();
+        receberNomeDoUsuario();
+        receberSenhaDoUsuario();
     }
 
-    private void receberIdentificadorDaPessoa() {
+    private void receberIdentificadorDoUsuario() {
         switch (tipoDePessoa) {
             case FISICA:
-                System.out.println("Digite o seu CPF");
+                System.out.println("Digite seu CPF: ");
                 break;
             case JURIDICA:
-                System.out.println("Digite o seu CNPJ");
+                System.out.println("Digite seu CNPJ: ");
                 break;
             default:
                 System.out.println("Erro na hora de pedir o CPF/CNPJ");
@@ -79,6 +71,18 @@ public class AbrirConta {
         }
         identificador = scanner.nextLine();
     }
+
+    private void receberNomeDoUsuario(){
+        System.out.println("Digite o nome:");
+        nome = scanner.nextLine();
+    }
+
+    private void receberSenhaDoUsuario() {
+        System.out.println("Digite a senha (somente números):");
+        senha = Integer.parseInt(scanner.nextLine());
+        //TODO fazer um try catch para o tipo de entrada.
+    }
+
 
     private void criarContasDoUsuario() {
         listaDeContasDoUsuario = cadastradorDeUsuario.criarContasDoUsuario();
@@ -92,9 +96,11 @@ public class AbrirConta {
     }
 
     private void adicionarUsuarioAoBanco() {
+
         cadastradorDeUsuario.adicionarUsuarioAoBanco(usuario, identificador);
     }
     private void adicionarContasAoBanco() {
+
         cadastradorDeUsuario.adicionarContasAoBanco(usuario);
     }
 
