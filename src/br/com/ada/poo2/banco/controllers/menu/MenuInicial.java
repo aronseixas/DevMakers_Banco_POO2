@@ -12,7 +12,7 @@ public class MenuInicial {
 
         while (true) {
 
-            System.out.print("##------------Bem-vindo ao BANCO-------------##\n\n");
+            System.out.print("##----------------Bem-vindo ao BANCO-----------------##\n\n");
             System.out.print("|----------------------------------------------------|\n");
             System.out.print("| Opção 1 - Abrir uma nova conta                     |\n");
             System.out.print("| Opção 2 - Acessar sua conta                        |\n");
