@@ -2,7 +2,7 @@ package br.com.ada.poo2.banco.controllers.operacoes;
 
 public class EscolherConta {
 
-    public static void escolherConta() {
+    public void escolherConta() {
         //mostrarContasDoUsuario();
         //pegarInputDaConta();
         //menuOperações.exibirOpcoes(Tipo de Conta)

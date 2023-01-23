@@ -11,59 +11,59 @@ public class MenuOperacoes {
 //TODO limitas as operações ao tipo de conta;
     //public void exibirOpcoes(ETipoConta tipoDeConta) {
 
-        static Scanner menu = new Scanner(System.in);
-        public static void iniciarMenuOperacoes() {
+    static Scanner menu = new Scanner(System.in);
+    public static void iniciarMenuOperacoes() {
 
-            while (true) {
+        while (true) {
 
-                System.out.print("##---------------Bem-vindo à sua conta----------------##\n\n");
-                System.out.print("|-----------------------------------------------------|\n");
-                System.out.print("| Opção 1 - Consultar saldo                           |\n");
-                System.out.print("| Opção 2 - Sacar                                     |\n");
-                System.out.print("| Opção 3 - Depositar                                 |\n");
-                System.out.print("| Opção 4 - Investir                                  |\n");
-                System.out.print("| Opção 5 - Transferir                                |\n");
-                System.out.print("| Opção 6 - Escolher conta                            |\n");
-                System.out.print("| Opção 7 - Sair                                      |\n");
-                System.out.print("|-----------------------------------------------------|\n");
-                System.out.print("Digite uma opção: ");
+            System.out.print("##---------------Bem-vindo à sua conta----------------##\n\n");
+            System.out.print("|-----------------------------------------------------|\n");
+            System.out.print("| Opção 1 - Consultar saldo                           |\n");
+            System.out.print("| Opção 2 - Sacar                                     |\n");
+            System.out.print("| Opção 3 - Depositar                                 |\n");
+            System.out.print("| Opção 4 - Investir                                  |\n");
+            System.out.print("| Opção 5 - Transferir                                |\n");
+            System.out.print("| Opção 6 - Escolher conta                            |\n");
+            System.out.print("| Opção 7 - Sair                                      |\n");
+            System.out.print("|-----------------------------------------------------|\n");
+            System.out.print("Digite uma opção: ");
 
-                String opcao = menu.next();
+            String opcao = menu.next();
 
-                if (opcao.equals("7")) {
-                    System.out.print("\nAté logo!");
-                    menu.close();
-                    break;
+            if (opcao.equals("7")) {
+                System.out.print("\nAté logo!");
+                menu.close();
+                break;
+            }
+
+            switch (opcao) {
+                case "1" -> {
+                    System.out.println("\nOpção Consultar saldo \n");
+                    ConsultarSaldo.mostrarSaldoDaConta();
                 }
-
-                switch (opcao) {
-                    case "1" -> {
-                        System.out.println("\nOpção Consultar saldo \n");
-                        ConsultarSaldo.mostrarSaldoDaConta();
-                    }
-                    case "2" -> {
-                        System.out.println("\nOpção Sacar \n");
-                        Sacar.executarSaque();
-                    }
-                    case "3" -> {
-                        System.out.println("\nOpção Depositar\n");
-                        Depositar.executarDeposito();
-                    }
-                    case "4" -> {
-                        System.out.println("\nOpção Investir\n");
-                        Investir.executarInvestimento();
-                    }
-                    case "5" -> {
-                        System.out.println("\nOpção Transferir\n");
-                        Transferir.executarTransferencia();
-                    }
-                    case "6" -> {
-                        System.out.println("\nOpção Escolher conta\n");
-                        EscolherConta.escolherConta();
-                    }
-                    default -> System.out.println("\nOpção Inválida!");
+                case "2" -> {
+                    System.out.println("\nOpção Sacar \n");
+                    Sacar.executarSaque();
                 }
+                case "3" -> {
+                    System.out.println("\nOpção Depositar\n");
+                    Depositar.executarDeposito();
+                }
+                case "4" -> {
+                    System.out.println("\nOpção Investir\n");
+                    Investir.executarInvestimento();
+                }
+                case "5" -> {
+                    System.out.println("\nOpção Transferir\n");
+                    Transferir.executarTransferencia();
+                }
+                case "6" -> {
+                    System.out.println("\nOpção Escolher conta\n");
+                    EscolherConta.escolherConta();
+                }
+                default -> System.out.println("\nOpção Inválida!");
             }
         }
     }
+}
 //}

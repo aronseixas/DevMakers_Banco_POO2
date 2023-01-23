@@ -9,8 +9,8 @@ public class PessoaFisica extends Pessoa {
     private String CPF;
 
 
-    public PessoaFisica(String nome, List<Conta> contas, String CPF) {
-        super(nome, contas);
+    public PessoaFisica(String nome, List<Conta> contas, int senha,  String CPF) {
+        super(nome, contas, senha);
         this.CPF = CPF;
     }
 

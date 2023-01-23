@@ -1,14 +1,18 @@
 package br.com.ada.poo2.banco.interfaces;
 
-import br.com.ada.poo2.banco.models.contas.Conta;
+import br.com.ada.poo2.banco.models.enums.EPessoa;
 
 public interface IConta {
+    public ITaxas getTaxas();
 
-    void sacar(double valor);
-    void depositar(double valor);
-    void transferir(double valor, Conta contaDestino);
-    void checarSaldo();
+    int getNumero();
 
+    double getSaldo();
 
+    void setSaldo(double valor);
+
+    IRendimento getRendimento();
+
+    EPessoa getPessoa();
 }
 
