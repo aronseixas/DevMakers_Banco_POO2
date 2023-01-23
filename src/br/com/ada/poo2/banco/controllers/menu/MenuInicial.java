@@ -30,15 +30,17 @@ public class MenuInicial {
             }
 
             switch (opcao) {
-                case "1" -> {
+                case "1" :
                     System.out.println("\nOpção abrir uma conta \n");
-                    AbrirConta.abrirConta();
-                }
-                case "2" -> {
+                    AbrirConta abrirConta = new AbrirConta();
+                    abrirConta.abrirConta();
+                    break;
+                    case "2" :
                     System.out.println("\nOpção acessar sua conta\n");
                     Logar.pedirIdentificadorCliente();
-                }
-                default -> System.out.println("\nOpção Inválida!");
+                    break;
+                default:
+                    System.out.println("\nOpção Inválida!");
             }
         }
     }

@@ -19,7 +19,7 @@ public class AbrirConta {
     String nome, identificador;
 
     static Scanner scanner = new Scanner(System.in);
-    public void  abrirConta() {
+    public void abrirConta() {
         exibirOpcoesDePessoa();
         criarCadastroDeCliente();
         receberDadosCadastrais();

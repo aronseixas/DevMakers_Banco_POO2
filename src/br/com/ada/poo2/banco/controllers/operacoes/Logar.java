@@ -4,7 +4,7 @@ import br.com.ada.poo2.banco.models.pessoas.Pessoa;
 
 public class Logar {
 
-    public void pedirIdentificadorCliente() {
+    public static void pedirIdentificadorCliente() {
         //Procurar na lista de clientes do banco qual cliente corresponde aquele identificador
             //Identificador Pessoa Física - CPF
             //Identificador Pessoa Jurídidca - CNPJ

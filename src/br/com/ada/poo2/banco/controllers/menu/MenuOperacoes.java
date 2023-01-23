@@ -37,29 +37,32 @@ public class MenuOperacoes {
             }
 
             switch (opcao) {
-                case "1" -> {
+                case "1" :
                     System.out.println("\nOpção Consultar saldo \n");
                     ConsultarSaldo.mostrarSaldoDaConta();
-                }
-                case "2" -> {
+                    break;
+                case "2" :
                     System.out.println("\nOpção Sacar \n");
                     Sacar.executarSaque();
-                }
-                case "3" -> {
+                    break;
+                case "3" :
                     System.out.println("\nOpção Depositar\n");
                     Depositar.executarDeposito();
-                }
-                case "4" -> {
+                    break;
+                case "4" :
                     System.out.println("\nOpção Investir\n");
                     Investir.executarInvestimento();
+                    break;
                 }
                 case "5" -> {
                     System.out.println("\nOpção Transferir\n");
                     Transferir.executarTransferencia();
+                    break;
                 }
                 case "6" -> {
                     System.out.println("\nOpção Escolher conta\n");
                     EscolherConta.escolherConta();
+                    break;
                 }
                 default -> System.out.println("\nOpção Inválida!");
             }
