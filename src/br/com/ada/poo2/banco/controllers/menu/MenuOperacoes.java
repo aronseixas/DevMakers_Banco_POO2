@@ -1,9 +1,5 @@
 package br.com.ada.poo2.banco.controllers.menu;
-
 import br.com.ada.poo2.banco.controllers.operacoes.*;
-import br.com.ada.poo2.banco.models.enums.ETipoConta;
-import br.com.ada.poo2.banco.models.pessoas.Pessoa;
-
 import java.util.Scanner;
 
 public class MenuOperacoes {
