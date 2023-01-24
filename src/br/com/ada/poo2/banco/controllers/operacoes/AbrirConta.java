@@ -33,7 +33,8 @@ public class AbrirConta {
         System.out.println("Qual tipo de conta você deseja abrir:");
         System.out.println("Opção 1 - Pessoa Física");
         System.out.println("Opção 2 - Pessoa Jurídica");
-        opcaoDePessoa = scanner.next();
+        opcaoDePessoa = scanner.nextLine();
+
     }
 
     private void criarCadastroDeCliente() {
@@ -106,6 +107,6 @@ public class AbrirConta {
 
     public void logarUsario() {
         Logar logar = new Logar();
-        logar.logarUsario(usuario);
+        logar.logarUsarioNovo(usuario);
     }
 }

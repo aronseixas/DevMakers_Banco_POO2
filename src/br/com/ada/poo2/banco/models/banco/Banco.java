@@ -23,7 +23,7 @@ public class Banco {
     }
 
     public void setUsuarioLogado(Pessoa usuarioLogado) {
-
+        this.usuarioLogado = usuarioLogado;
     }
 
     public Pessoa getUsuarioLogado() {
