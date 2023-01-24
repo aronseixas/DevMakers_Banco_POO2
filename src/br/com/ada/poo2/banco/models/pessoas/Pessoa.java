@@ -1,6 +1,7 @@
 package br.com.ada.poo2.banco.models.pessoas;
 
 import br.com.ada.poo2.banco.models.contas.Conta;
+import br.com.ada.poo2.banco.models.enums.EPessoa;
 
 import java.util.List;
 
@@ -9,11 +10,13 @@ public abstract class Pessoa {
     private List<Conta> contas;
     private int senha;
 
+    private EPessoa tipoDePessoa;
 
-    public Pessoa(String nome, List<Conta> contas, int senha) {
+
+    public Pessoa(String nome, int senha, EPessoa tipoDePessoa) {
         this.nome = nome;
-        this.contas = contas;
         this.senha = senha;
+        this.tipoDePessoa = tipoDePessoa;
     }
 
     public String getNome() {
@@ -30,6 +33,14 @@ public abstract class Pessoa {
 
     public int getSenha() {
         return senha;
+    }
+
+    public EPessoa getTipoDePessoa() {
+        return tipoDePessoa;
+    }
+
+    public void setContas(List<Conta> contas) {
+        this.contas = contas;
     }
 }
 

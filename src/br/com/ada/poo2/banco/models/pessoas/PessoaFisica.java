@@ -1,18 +1,16 @@
 package br.com.ada.poo2.banco.models.pessoas;
 
-import br.com.ada.poo2.banco.models.contas.Conta;
-
-import java.util.List;
+import br.com.ada.poo2.banco.models.enums.EPessoa;
 
 public class PessoaFisica extends Pessoa {
 
     private String CPF;
 
-
-    public PessoaFisica(String nome, List<Conta> contas, int senha,  String CPF) {
-        super(nome, contas, senha);
+    public PessoaFisica(String nome, int senha, EPessoa tipoDePessoa, String CPF) {
+        super(nome, senha, tipoDePessoa);
         this.CPF = CPF;
     }
+
 
     public String getCPF() {
         return CPF;

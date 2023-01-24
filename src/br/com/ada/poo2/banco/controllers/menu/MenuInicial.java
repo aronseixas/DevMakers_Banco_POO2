@@ -1,7 +1,9 @@
 package br.com.ada.poo2.banco.controllers.menu;
 
-import br.com.ada.poo2.banco.controllers.operacoes.AbrirConta;
+import br.com.ada.poo2.banco.controllers.operacoes.CadastrarUsuario;
+import br.com.ada.poo2.banco.controllers.operacoes.CriarConta;
 import br.com.ada.poo2.banco.controllers.operacoes.Logar;
+import br.com.ada.poo2.banco.models.pessoas.Pessoa;
 
 import java.util.Scanner;
 
@@ -31,8 +33,12 @@ public class MenuInicial {
             switch (opcao) {
                 case "1" :
                     System.out.println("\nOpção abrir uma conta \n");
-                    AbrirConta abrirConta = new AbrirConta();
-                    abrirConta.executar();
+                    CadastrarUsuario cadastrarUsuario = new CadastrarUsuario();
+                    cadastrarUsuario.executar();
+                    Pessoa usuarioCadastrado = cadastrarUsuario.getUsuarioCadastrado();
+                    CriarConta criarConta = new CriarConta();
+                    criarConta.executar(usuarioCadastrado);
+                    //TODO SUGESTÃO - colocar funções dentro dos switches e nelas fazer o fluxo.
                     break;
                     case "2" :
                     System.out.println("\nOpção acessar sua conta\n");

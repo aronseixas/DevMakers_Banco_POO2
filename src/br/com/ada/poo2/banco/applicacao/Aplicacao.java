@@ -1,25 +1,10 @@
 package br.com.ada.poo2.banco.applicacao;
 
 import br.com.ada.poo2.banco.controllers.menu.MenuInicial;
-import br.com.ada.poo2.banco.controllers.menu.MenuOperacoes;
 import br.com.ada.poo2.banco.models.banco.Banco;
-import br.com.ada.poo2.banco.models.contas.Conta;
-import br.com.ada.poo2.banco.models.contas.ContaCorrente;
-import br.com.ada.poo2.banco.models.pessoas.Pessoa;
-import br.com.ada.poo2.banco.models.pessoas.PessoaFisica;
-import br.com.ada.poo2.banco.models.pessoas.PessoaJuridica;
-import br.com.ada.poo2.banco.models.rendimento.RendimentoPF;
-import br.com.ada.poo2.banco.models.taxas.TaxasPF;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 public class Aplicacao {
     public static Banco banco = new Banco();
-    public MenuInicial menuInicial = new MenuInicial();
-
-    public MenuOperacoes menuOperacoes = new MenuOperacoes();
 
     public static void main(String[] args) {
         Aplicacao aplicacao = new Aplicacao();
