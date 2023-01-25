@@ -6,7 +6,7 @@ import br.com.ada.poo2.banco.models.enums.ETipoConta;
 public interface IConta {
     public ITaxas getTaxas();
 
-    int getNumero();
+    String getNumero();
 
     double getSaldo();
 

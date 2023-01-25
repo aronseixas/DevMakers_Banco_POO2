@@ -1,18 +1,31 @@
 package br.com.ada.poo2.banco.models.rendimento;
 
 import br.com.ada.poo2.banco.interfaces.IRendimento;
+import br.com.ada.poo2.banco.models.enums.ETipoConta;
 
 public class RendimentoPF implements IRendimento {
     @Override
-    public double taxaRendimento(String tipoConta) {
+    public double taxaRendimentoDeposito(ETipoConta tipoConta) {
 
-        if (tipoConta.equals("POUPANCA")){
-            return 0.01;
-        } else if (tipoConta.equals("INVESTIMENTO")) {
-            return 0.015;
-        } else {
-            return 0;
+        switch (tipoConta) {
+
+            case POUPANCA:
+                return 0.01;
+
+            default:
+                return 0;
         }
     }
 
+    public double taxaRendimentoInvestimento(ETipoConta tipoConta) {
+
+        switch (tipoConta) {
+
+            case INVESTIMENTO:
+                return 0.015;
+
+            default:
+                return 0;
+        }
+    }
 }

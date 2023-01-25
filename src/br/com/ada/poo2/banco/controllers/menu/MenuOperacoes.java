@@ -1,5 +1,7 @@
 package br.com.ada.poo2.banco.controllers.menu;
 import br.com.ada.poo2.banco.controllers.operacoes.*;
+
+import java.awt.*;
 import java.util.Scanner;
 
 public class MenuOperacoes {
@@ -42,10 +44,12 @@ public class MenuOperacoes {
                 case "2" :
                     System.out.println("\nOpção Sacar \n");
                     sacar.executar();
+                    consultarSaldo.executar();
                     break;
                 case "3" :
                     System.out.println("\nOpção Depositar\n");
                     depositar.executar();
+                    consultarSaldo.executar();
                     break;
                 case "4" :
                     System.out.println("\nOpção Investir\n");
@@ -60,7 +64,7 @@ public class MenuOperacoes {
                     escolherConta.executar();
                     break;
                 case "7" :
-                    sair.executar();
+                    MenuInicial.iniciarPrimeiroMenu();
                     scan.close();
                     //TODO iniciarPrimeiroMenu();
                     break;

@@ -8,16 +8,13 @@ import br.com.ada.poo2.banco.models.enums.ETipoConta;
 
 public  class Conta implements IConta {
     private ETipoConta tipoConta;
-    private int numero;
+    private String numero;
     protected double saldo;
     private IRendimento rendimento;
-
-
-
     private ITaxas taxas;
     private EPessoa pessoa;
 
-    public Conta(int numero, double saldo, IRendimento rendimento, ITaxas taxas, EPessoa pessoa, ETipoConta tipoConta) {
+    public Conta(String numero, double saldo, IRendimento rendimento, ITaxas taxas, EPessoa pessoa, ETipoConta tipoConta) {
         this.numero = numero;
         //Número vai ser com base no identificador da Pessoa
             //PessoaFIsica - CPF e PessoaJuridica - CNPJ
@@ -34,7 +31,7 @@ public  class Conta implements IConta {
     }
 
     @Override
-    public int getNumero() {
+    public String getNumero() {
         return this.numero;
     }
 

@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Banco {
-    Map<Integer, Pessoa> mapaDeContas = new HashMap<>();
+    Map<String, Pessoa> mapaDeContas = new HashMap<String, Pessoa>();
     //Associa o <Número de Conta, Pessoa>
     Map<String, Pessoa> mapaDeClientes = new HashMap<>();
     Pessoa usuarioLogado;
@@ -30,7 +30,7 @@ public class Banco {
         return usuarioLogado;
     }
 
-    public Map<Integer, Pessoa> getMapaDeContas() {
+    public Map<String, Pessoa> getMapaDeContas() {
         return mapaDeContas;
     }
 

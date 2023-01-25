@@ -6,5 +6,6 @@ import br.com.ada.poo2.banco.models.pessoas.Pessoa;
 import java.util.List;
 
 public interface ICriarConta {
-    List<Conta> criarContas();
+
+    List<Conta> criarContas(String identificadorDoUsuario);
 }

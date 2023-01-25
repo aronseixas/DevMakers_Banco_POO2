@@ -7,11 +7,12 @@ public class TaxasPJ implements ITaxas {
     @Override
     public double taxa(String tipoOperacao) {
 
-        if(tipoOperacao.equals("SAQUE") || tipoOperacao.equals("TRANSFERENCIA")) {
+        if(tipoOperacao.equals("SAQUE")) {
+            return 0.005;
+        } else if (tipoOperacao.equals("TRANSFERENCIA")) {
             return 0.005;
         } else {
             return 0;
         }
     }
-
 }

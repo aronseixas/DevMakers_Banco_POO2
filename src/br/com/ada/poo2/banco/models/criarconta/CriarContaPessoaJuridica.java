@@ -17,16 +17,18 @@ public class CriarContaPessoaJuridica implements ICriarConta {
 
     List<Conta> listaDeContas = new ArrayList<>();
 
-
+    private String identificadorCNPJ;
     @Override
-    public List<Conta> criarContas() {
+    public List<Conta> criarContas(String identificadorCNPJ) {
+        this.identificadorCNPJ = identificadorCNPJ;
         criarContaCorrente();
         criarContaInvestimento();
         return listaDeContas;
     }
 
     private void criarContaCorrente() {
-        contaCorrente = new ContaCorrente(0000,
+        String identificadorUsuarioContaCorrente = identificadorCNPJ + ".1";
+        contaCorrente = new ContaCorrente(identificadorUsuarioContaCorrente,
                 0,
                 new RendimentoPJ(),
                 new TaxasPJ(),
@@ -36,7 +38,8 @@ public class CriarContaPessoaJuridica implements ICriarConta {
     }
 
     public void criarContaInvestimento() {
-        contaInvestimento = new ContaInvestimento(0000,
+        String identificadorUsuarioContaInvestimento = identificadorCNPJ + ".3";
+        contaInvestimento = new ContaInvestimento(identificadorUsuarioContaInvestimento,
                 0,
                 new RendimentoPJ(),
                 new TaxasPJ(),

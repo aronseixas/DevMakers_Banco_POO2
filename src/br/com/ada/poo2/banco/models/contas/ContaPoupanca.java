@@ -6,7 +6,7 @@ import br.com.ada.poo2.banco.models.enums.EPessoa;
 import br.com.ada.poo2.banco.models.enums.ETipoConta;
 
 public class ContaPoupanca extends Conta {
-    public ContaPoupanca(int numero, double saldo, IRendimento rendimento, ITaxas taxas, EPessoa pessoa, ETipoConta tipoConta) {
+    public ContaPoupanca(String numero, double saldo, IRendimento rendimento, ITaxas taxas, EPessoa pessoa, ETipoConta tipoConta) {
         super(numero, saldo, rendimento, taxas, pessoa, tipoConta);
     }
 }

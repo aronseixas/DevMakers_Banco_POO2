@@ -9,7 +9,6 @@ public abstract class Pessoa {
     private String nome;
     private List<Conta> contas;
     private int senha;
-
     private EPessoa tipoDePessoa;
 
 

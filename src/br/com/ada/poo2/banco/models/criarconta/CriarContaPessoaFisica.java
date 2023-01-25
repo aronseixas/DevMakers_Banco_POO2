@@ -18,8 +18,10 @@ import java.util.List;
 public class CriarContaPessoaFisica implements ICriarConta {
     Conta contaCorrente, contaPoupanca, contaInvestimento;
     List<Conta> listaDeContas = new ArrayList<>();
+    private String identificadorCPF;
     @Override
-    public List<Conta> criarContas() {
+    public List<Conta> criarContas(String identificadorDoUsuario) {
+        this.identificadorCPF = identificadorDoUsuario;
         criarContaCorrente();
         criarContaInvestimento();
         criarContaPoupanca();
@@ -27,7 +29,8 @@ public class CriarContaPessoaFisica implements ICriarConta {
     }
 
     private void criarContaCorrente() {
-        contaCorrente = new ContaCorrente(0000,
+        String identificadorDoUsuarioContaCorrente = identificadorCPF + ".1";
+        contaCorrente = new ContaCorrente(identificadorDoUsuarioContaCorrente,
                 0,
                 new RendimentoPF(),
                 new TaxasPF(),
@@ -37,7 +40,8 @@ public class CriarContaPessoaFisica implements ICriarConta {
     }
 
     private void criarContaPoupanca() {
-        contaPoupanca = new ContaPoupanca(0000,
+        String identificadorDoUsuarioContaPoupanca = identificadorCPF + ".2";
+        contaPoupanca = new ContaPoupanca(identificadorDoUsuarioContaPoupanca,
                 0,
                 new RendimentoPF(),
                 new TaxasPF(),
@@ -47,7 +51,8 @@ public class CriarContaPessoaFisica implements ICriarConta {
     }
 
     private void criarContaInvestimento() {
-        contaInvestimento = new ContaInvestimento(0000,
+        String identificadorDoUsuarioContaInvestimento = identificadorCPF + ".3";
+        contaInvestimento = new ContaInvestimento(identificadorDoUsuarioContaInvestimento,
                 0,
                 new RendimentoPF(),
                 new TaxasPF(),
