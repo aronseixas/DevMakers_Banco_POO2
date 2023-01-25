@@ -4,15 +4,20 @@ import br.com.ada.poo2.banco.interfaces.IConta;
 import br.com.ada.poo2.banco.interfaces.IRendimento;
 import br.com.ada.poo2.banco.interfaces.ITaxas;
 import br.com.ada.poo2.banco.models.enums.EPessoa;
+import br.com.ada.poo2.banco.models.enums.ETipoConta;
 
 public  class Conta implements IConta {
+    private ETipoConta tipoConta;
     private int numero;
     protected double saldo;
     private IRendimento rendimento;
+
+
+
     private ITaxas taxas;
     private EPessoa pessoa;
 
-    public Conta(int numero, double saldo, IRendimento rendimento, ITaxas taxas, EPessoa pessoa) {
+    public Conta(int numero, double saldo, IRendimento rendimento, ITaxas taxas, EPessoa pessoa, ETipoConta tipoConta) {
         this.numero = numero;
         //Número vai ser com base no identificador da Pessoa
             //PessoaFIsica - CPF e PessoaJuridica - CNPJ
@@ -20,6 +25,7 @@ public  class Conta implements IConta {
         this.rendimento = rendimento;
         this.taxas = taxas;
         this.pessoa = pessoa;
+        this.tipoConta = tipoConta;
     }
 
     @Override
@@ -50,5 +56,9 @@ public  class Conta implements IConta {
     @Override
     public EPessoa getPessoa() {
         return this.pessoa;
+    }
+    @Override
+    public ETipoConta getTipoConta() {
+        return tipoConta;
     }
 }

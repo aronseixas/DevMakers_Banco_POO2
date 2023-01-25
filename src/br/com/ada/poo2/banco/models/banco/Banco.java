@@ -1,5 +1,6 @@
 package br.com.ada.poo2.banco.models.banco;
 
+import br.com.ada.poo2.banco.models.contas.Conta;
 import br.com.ada.poo2.banco.models.pessoas.Pessoa;
 
 import java.util.HashMap;
@@ -11,8 +12,10 @@ public class Banco {
     //Associa o <Número de Conta, Pessoa>
     Map<String, Pessoa> mapaDeClientes = new HashMap<>();
     Pessoa usuarioLogado;
+    Conta contaLogada;
 
-    //TODO Deixar pré-carregado uma Pessoa Física e uma Pessoa Jurídica com cada tipo de conta para testes
+
+//TODO Deixar pré-carregado uma Pessoa Física e uma Pessoa Jurídica com cada tipo de conta para testes
 
 
     public void getListaDeContas() {
@@ -33,5 +36,13 @@ public class Banco {
 
     public Map<String, Pessoa> getMapaDeClientes() {
         return mapaDeClientes;
+    }
+
+    public Conta getContaLogada() {
+        return contaLogada;
+    }
+
+    public void setContaLogada(Conta contaLogada) {
+        this.contaLogada = contaLogada;
     }
 }

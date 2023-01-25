@@ -2,6 +2,7 @@ package br.com.ada.poo2.banco.controllers.menu;
 
 import br.com.ada.poo2.banco.controllers.operacoes.CadastrarUsuario;
 import br.com.ada.poo2.banco.controllers.operacoes.CriarConta;
+import br.com.ada.poo2.banco.controllers.operacoes.EscolherConta;
 import br.com.ada.poo2.banco.controllers.operacoes.Logar;
 import br.com.ada.poo2.banco.models.pessoas.Pessoa;
 
@@ -9,7 +10,7 @@ import java.util.Scanner;
 
 public class MenuInicial {
 
-    static Scanner menu = new Scanner(System.in);
+    static Scanner scan = new Scanner(System.in);
     public static void iniciarPrimeiroMenu(){
 
         while (true) {
@@ -22,15 +23,13 @@ public class MenuInicial {
             System.out.print("|----------------------------------------------------|\n");
             System.out.print("Digite uma opção: ");
 
-            String opcao = menu.next();
-
-            if (opcao.equals("3")) {
-                System.out.print("\nAté logo!");
-                menu.close();
-                break;
-            }
+            String opcao = scan.next();
+            Logar logar = new Logar();
+            EscolherConta escolherConta = new EscolherConta();
+            MenuOperacoes menuOperacoes = new MenuOperacoes();
 
             switch (opcao) {
+
                 case "1" :
                     System.out.println("\nOpção abrir uma conta \n");
                     CadastrarUsuario cadastrarUsuario = new CadastrarUsuario();
@@ -38,15 +37,27 @@ public class MenuInicial {
                     Pessoa usuarioCadastrado = cadastrarUsuario.getUsuarioCadastrado();
                     CriarConta criarConta = new CriarConta();
                     criarConta.executar(usuarioCadastrado);
+                    logar.logarUsarioNovo(usuarioCadastrado);
+                    escolherConta.executar();
+                    menuOperacoes.iniciarMenuOperacoes();
+
                     //TODO SUGESTÃO - colocar funções dentro dos switches e nelas fazer o fluxo.
                     break;
-                    case "2" :
+                case "2" :
                     System.out.println("\nOpção acessar sua conta\n");
-                    Logar logar = new Logar();
                     logar.executar();
+                    escolherConta.executar();
+                    menuOperacoes.iniciarMenuOperacoes();
                     break;
+                case "3" :
+                        System.out.print("\nAté logo!");
+                        scan.close();
+                        System.exit(0);
+                        break;
                 default:
                     System.out.println("\nOpção Inválida!");
+
+                    //TODO se tirar o while - fazer default voltar ao menu enicial.
             }
         }
     }

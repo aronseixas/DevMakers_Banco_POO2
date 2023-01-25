@@ -46,7 +46,7 @@ public class Logar {
 
     public void logarUsarioCadastrado() {
         banco.setUsuarioLogado(usuarioRealizandoLogin);
-        EscolherConta.escolherConta();
+
     }
 
     public void logarUsarioNovo(Pessoa pessoa) {

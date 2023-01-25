@@ -3,10 +3,12 @@ import br.com.ada.poo2.banco.controllers.operacoes.*;
 import java.util.Scanner;
 
 public class MenuOperacoes {
+
 //TODO apresentar nome de usuário e qual a conta logada;
 //TODO limitas as operações ao tipo de conta;
-    static Scanner menu = new Scanner(System.in);
-    public static void iniciarMenuOperacoes() {
+    static Scanner scan = new Scanner(System.in);
+    public void iniciarMenuOperacoes() {
+
 
         while (true) {
 
@@ -22,41 +24,49 @@ public class MenuOperacoes {
             System.out.print("|-----------------------------------------------------|\n");
             System.out.print("Digite uma opção: ");
 
-            String opcao = menu.next();
+            String opcao = scan.next();
+            ConsultarSaldo consultarSaldo = new ConsultarSaldo();
+            Sacar sacar = new Sacar();
+            Depositar depositar = new Depositar();
+            Investir investir = new Investir();
+            Transferir transferir = new Transferir();
+            EscolherConta escolherConta = new EscolherConta();
+            Sair sair = new Sair();
 
-            if (opcao.equals("7")) {
-                System.out.print("\nAté logo!");
-                menu.close();
-                break;
-            }
 
             switch (opcao) {
                 case "1" :
-                    System.out.println("\nOpção Consultar saldo \n");
-                    ConsultarSaldo.mostrarSaldoDaConta();
+
+                    consultarSaldo.executar();
                     break;
                 case "2" :
                     System.out.println("\nOpção Sacar \n");
-                    Sacar.executarSaque();
+                    sacar.executar();
                     break;
                 case "3" :
                     System.out.println("\nOpção Depositar\n");
-                    Depositar.executarDeposito();
+                    depositar.executar();
                     break;
                 case "4" :
                     System.out.println("\nOpção Investir\n");
-                    Investir.executarInvestimento();
+                    investir.executar();
                     break;
                 case "5" :
                     System.out.println("\nOpção Transferir\n");
-                    Transferir.executarTransferencia();
+                    transferir.executar();
                     break;
                 case "6" :
                     System.out.println("\nOpção Escolher conta\n");
-                    EscolherConta.escolherConta();
+                    escolherConta.executar();
+                    break;
+                case "7" :
+                    sair.executar();
+                    scan.close();
+                    //TODO iniciarPrimeiroMenu();
                     break;
                 default :
                     System.out.println("\nOpção Inválida!");
+                    //TODO REFATORAR DIVIDINDO EM MAIS MÉTODOS
             }
         }
     }

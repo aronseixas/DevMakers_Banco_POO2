@@ -1,9 +1,14 @@
 package br.com.ada.poo2.banco.controllers.operacoes;
 
-public class ConsultarSaldo {
-    //Deve retornar MenuOperacoes ao final
+import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;
 
-    public static void mostrarSaldoDaConta() {
-    //getSaldo
+public class ConsultarSaldo {
+
+    public void executar() {
+        System.out.println("~~~~~~~~~~~~~~~~~~ ");
+        System.out.println("Consulta de saldo ");
+        System.out.println("~~~~~~~~~~~~~~~~~~ \n");
+
+        System.out.printf("Saldo atual: R$ %.2f%n ", banco.getContaLogada().getSaldo());
     }
 }

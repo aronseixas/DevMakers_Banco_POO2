@@ -7,6 +7,7 @@ import br.com.ada.poo2.banco.models.contas.ContaInvestimento;
 import br.com.ada.poo2.banco.models.contas.ContaPoupanca;
 import br.com.ada.poo2.banco.models.enums.EPessoa;
 
+import br.com.ada.poo2.banco.models.enums.ETipoConta;
 import br.com.ada.poo2.banco.models.rendimento.RendimentoPF;
 import br.com.ada.poo2.banco.models.taxas.TaxasPF;
 
@@ -20,8 +21,8 @@ public class CriarContaPessoaFisica implements ICriarConta {
     @Override
     public List<Conta> criarContas() {
         criarContaCorrente();
-        criarContaPoupanca();
         criarContaInvestimento();
+        criarContaPoupanca();
         return listaDeContas;
     }
 
@@ -30,7 +31,8 @@ public class CriarContaPessoaFisica implements ICriarConta {
                 0,
                 new RendimentoPF(),
                 new TaxasPF(),
-                EPessoa.FISICA);
+                EPessoa.FISICA,
+                ETipoConta.CORRENTE);
         listaDeContas.add(contaCorrente);
     }
 
@@ -39,7 +41,8 @@ public class CriarContaPessoaFisica implements ICriarConta {
                 0,
                 new RendimentoPF(),
                 new TaxasPF(),
-                EPessoa.FISICA);
+                EPessoa.FISICA,
+                ETipoConta.POUPANCA);
         listaDeContas.add(contaPoupanca);
     }
 
@@ -48,7 +51,8 @@ public class CriarContaPessoaFisica implements ICriarConta {
                 0,
                 new RendimentoPF(),
                 new TaxasPF(),
-                EPessoa.FISICA);
+                EPessoa.FISICA,
+                ETipoConta.INVESTIMENTO);
         listaDeContas.add(contaInvestimento);
     }
 
