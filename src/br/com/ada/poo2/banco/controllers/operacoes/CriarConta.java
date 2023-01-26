@@ -44,7 +44,7 @@ public class CriarConta {
     }
 
     private void criarConta() {
-        listaDeContasDoUsuario = criadorDeConta.criarContas();
+        listaDeContasDoUsuario = criadorDeConta.criarContas(usuarioCadastrado.getIdentificador());
         //TODO entender esse erro.
     }
 //TODO adicionar método para geração de inteiros aleatórios.
