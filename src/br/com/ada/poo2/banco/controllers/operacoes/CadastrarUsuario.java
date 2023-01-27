@@ -23,9 +23,7 @@ public class CadastrarUsuario {
 
         usuarioCadastrado = criarUsuario(nome, senha);
 
-        tipoDeIdentificador = getTipoDeIdentificador();
-
-        exibirOpcoesIdentificadorDoUsuario(tipoDeIdentificador);
+        exibirOpcoesIdentificadorDoUsuario();
 
         identificador = pedirIdentificadorDoUsuario();
 
@@ -38,7 +36,7 @@ public class CadastrarUsuario {
         String nome;
         System.out.println("Digite o nome:");
         nome = scanner.nextLine();
-        //TODO validar e try-catch
+        // TODO validar e try-catch
         return nome;
     }
 
@@ -46,7 +44,7 @@ public class CadastrarUsuario {
         int senha;
         System.out.println("Digite a senha (somente números):");
         senha = Integer.parseInt(scanner.nextLine());
-        //TODO fazer um try catch para o tipo de entrada.
+        // TODO fazer um try catch para o tipo de entrada.
         return senha;
     }
 
@@ -55,20 +53,18 @@ public class CadastrarUsuario {
         return pessoaFactory.criarUsuario(nome, senha);
     }
 
-    public String getTipoDeIdentificador() {
-        return usuarioCadastrado.tipoDeIdentificador();
-    }
 
-    private void exibirOpcoesIdentificadorDoUsuario(String tipoDeIdentificador) {
+    private void exibirOpcoesIdentificadorDoUsuario() {
+        String tipoDeIdentificador = usuarioCadastrado.tipoDeIdentificador();
         System.out.println("Digite o seu " + tipoDeIdentificador + ":");
     }
 
     public String pedirIdentificadorDoUsuario() {
         String identificador;
         identificador = scanner.nextLine();
-        //TODO validar e try-catch
+        // TODO validar e try-catch
         return identificador;
-        //TODO validar se já há contas abertars naquele CPF/CNPJ
+        // TODO validar se já há contas abertars naquele CPF/CNPJ
     }
 
 
@@ -85,5 +81,5 @@ public class CadastrarUsuario {
     public Pessoa getUsuarioCadastrado() {
         return this.usuarioCadastrado;
     }
-    //TODO talvez colocar em sua própria classe
+    // TODO talvez colocar em sua própria classe
 }
