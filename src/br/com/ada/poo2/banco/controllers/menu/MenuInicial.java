@@ -1,9 +1,6 @@
 package br.com.ada.poo2.banco.controllers.menu;
 
-import br.com.ada.poo2.banco.controllers.operacoes.CadastrarUsuario;
-import br.com.ada.poo2.banco.controllers.operacoes.CriarConta;
-import br.com.ada.poo2.banco.controllers.operacoes.EscolherConta;
-import br.com.ada.poo2.banco.controllers.operacoes.Logar;
+import br.com.ada.poo2.banco.controllers.operacoes.*;
 import br.com.ada.poo2.banco.models.pessoas.Pessoa;
 
 import java.util.Scanner;
@@ -24,7 +21,7 @@ public class MenuInicial {
             System.out.print("Digite uma opção: ");
 
             String opcao = scan.next();
-            Logar logar = new Logar();
+            LogarUsuario logar = new LogarUsuario();
             EscolherConta escolherConta = new EscolherConta();
             MenuOperacoes menuOperacoes = new MenuOperacoes();
 
@@ -32,6 +29,8 @@ public class MenuInicial {
 
                 case "1" :
                     System.out.println("\nOpção abrir uma conta \n");
+                    DeterminarFactory determinarFactory = new DeterminarFactory();
+                    determinarFactory.executar();
                     CadastrarUsuario cadastrarUsuario = new CadastrarUsuario();
                     cadastrarUsuario.executar();
                     Pessoa usuarioCadastrado = cadastrarUsuario.getUsuarioCadastrado();

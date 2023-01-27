@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;
 
-public class Logar {
+public class LogarUsuario {
 
     private Pessoa usuarioRealizandoLogin;
     private int senhaDigitada;
