@@ -13,7 +13,7 @@ public class Investir {
         double saldoAtualDaConta = banco.getContaLogada().getSaldo();
         double rendimentoDoInvestimento = aplicarRendimento(valorASerInvestido);
 
-        banco.getContaLogada().setSaldo(saldoAtualDaConta + (valorASerInvestido + rendimentoDoInvestimento));
+        banco.getContaLogada().setSaldo(saldoAtualDaConta - valorASerInvestido + rendimentoDoInvestimento);
 
         //conta investimento possui um ou dois saldos?
         //getSaldo está mostrando o saldo da conta corrente e não da conta investimento.
