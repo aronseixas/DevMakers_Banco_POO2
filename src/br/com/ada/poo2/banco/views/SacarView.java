@@ -28,6 +28,7 @@ public class SacarView {
     public void sacarValor(double valor) {
         try {
             sacar.sacarDaContaDoUsuario(valor);
+            System.out.println("Saque efetuado com sucesso!");
         } catch (InsufficientFundsException e) {
             System.out.println("Valor inválido!");
             iniciarSacar();

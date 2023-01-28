@@ -53,21 +53,21 @@ public class MenuOperacoesView {
                 menuOperacoesController.sacar();
                 iniciarMenuOperacoesView();
                 break;
-//            case "3" :
-//                System.out.println("\nOpção Depositar\n");
-//                depositar.executar();
-//                consultarSaldo.executar();
-//                break;
-//            case "4" :
-//                System.out.println("\nOpção Investir\n");
-//                investir.executar();
-//                consultarSaldo.executar();
-//                break;
-//            case "5" :
-//                System.out.println("\nOpção Transferir\n");
-//                transferir.executar();
-//                consultarSaldo.executar();
-//                break;
+            case "3" :
+                System.out.println("\nOpção Depositar\n");
+                menuOperacoesController.depositar();
+                iniciarMenuOperacoesView();
+                break;
+            case "4" :
+                System.out.println("\nOpção Investir\n");
+                menuOperacoesController.investir();
+                iniciarMenuOperacoesView();
+                break;
+            case "5" :
+                System.out.println("\nOpção Transferir\n");
+                menuOperacoesController.transferir();
+                iniciarMenuOperacoesView();
+                break;
 //            case "6" :
 //                System.out.println("\nOpção Escolher conta\n");
 //                //escolherConta.executar();

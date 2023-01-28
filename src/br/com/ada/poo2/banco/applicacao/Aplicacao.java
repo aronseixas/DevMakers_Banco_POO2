@@ -7,6 +7,8 @@ import br.com.ada.poo2.banco.controllers.operacoes.*;
 import br.com.ada.poo2.banco.views.*;
 import br.com.ada.poo2.banco.models.banco.Banco;
 
+import java.util.Scanner;
+
 public class Aplicacao {
     public static Banco banco = new Banco();
 
@@ -34,9 +36,17 @@ public class Aplicacao {
 
     public void setUpMenuOperacoesController() {
         ConsultarSaldoView consultarSaldoView = new ConsultarSaldoView();
+        SacarView sacarView = new SacarView();
+        DepositarView depositarView = new DepositarView();
+        TransferirView transferirView = new TransferirView();
+        InvestirView investirView = new InvestirView();
 
         menuOperacoesController = new MenuOperacoesController(
-                consultarSaldoView
+                consultarSaldoView,
+                sacarView,
+                depositarView,
+                transferirView,
+                investirView
         );
     }
     public void setUpDeterminarFactoryView() {
