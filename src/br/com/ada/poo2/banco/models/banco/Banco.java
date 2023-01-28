@@ -12,6 +12,7 @@ public class Banco {
     Map<String, Pessoa> mapaDeContas = new HashMap<String, Pessoa>();
     //Associa o <Número de Conta, Pessoa>
     Map<String, Pessoa> mapaDeClientes = new HashMap<>();
+    Map<String, Conta> mapaDeNumeroContaEConta = new HashMap<>();
     Pessoa usuarioLogado;
     Conta contaLogada;
 
@@ -56,4 +57,9 @@ public class Banco {
     public void setPessoaFactory(IPessoaFactory pessoaFactory) {
         this.pessoaFactory = pessoaFactory;
     }
+
+    public Map<String, Conta> getMapaDeNumeroContaEConta() {
+        return mapaDeNumeroContaEConta;
+    }
+
 }

@@ -42,10 +42,11 @@ public class CriarContaPessoaFisica implements ICriarConta {
                 TAXA_DE_OPERACAO,
                 TIPO_DE_PESSOA);
         listaDeContas.add(contaCorrente);
-        banco.getMapaDeNumeroContaEConta().put(identificadorDoUsuarioContaCorrente, contaCorrente);
+        banco.getMapaDeNumeroContaEConta().put(numeroContaCorrente, contaCorrente);
 
 
     }
+
 
     private void criarContaPoupanca(String CPF) {
         String numeroContaPoupanca = CPF + ".2";
@@ -56,7 +57,7 @@ public class CriarContaPessoaFisica implements ICriarConta {
                 TAXA_DE_OPERACAO,
                 TIPO_DE_PESSOA);
         listaDeContas.add(contaPoupanca);
-        banco.getMapaDeNumeroContaEConta().put(identificadorDoUsuarioContaPoupanca, contaPoupanca);
+        banco.getMapaDeNumeroContaEConta().put(numeroContaPoupanca, contaPoupanca);
     }
 
     private void criarContaInvestimento(String CPF) {
@@ -68,7 +69,7 @@ public class CriarContaPessoaFisica implements ICriarConta {
                 TAXA_DE_OPERACAO,
                 TIPO_DE_PESSOA);
         listaDeContas.add(contaInvestimento);
-        banco.getMapaDeNumeroContaEConta().put(identificadorDoUsuarioContaInvestimento, contaInvestimento);
+        banco.getMapaDeNumeroContaEConta().put(numeroContaInvestimento, contaInvestimento);
     }
 
 }

@@ -13,6 +13,8 @@ import br.com.ada.poo2.banco.models.taxas.TaxasPJ;
 import java.util.ArrayList;
 import java.util.List;
 
+import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;
+
 public class CriarContaPessoaJuridica implements ICriarConta {
     List<Conta> listaDeContas = new ArrayList<>();
     Conta contaCorrente, contaInvestimento;
@@ -37,6 +39,7 @@ public class CriarContaPessoaJuridica implements ICriarConta {
                 TAXA_DE_OPERACAO,
                 TIPO_DE_PESSOA);
         listaDeContas.add(contaCorrente);
+        banco.getMapaDeNumeroContaEConta().put(numeroContaCorrente, contaCorrente);
     }
 
     public void criarContaInvestimento(String CNPJ) {
@@ -48,5 +51,6 @@ public class CriarContaPessoaJuridica implements ICriarConta {
                 TAXA_DE_OPERACAO,
                 TIPO_DE_PESSOA);
         listaDeContas.add(contaInvestimento);
+        banco.getMapaDeNumeroContaEConta().put(numeroContaInvestimento, contaInvestimento);
     }
 }
