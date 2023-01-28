@@ -7,9 +7,10 @@ import java.util.Scanner;
 import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;
 
 public class Investir {
-    double saldoAtualDaConta = banco.getContaLogada().getSaldo();
+
     public void executar(double valorASerInvestido) {
         validarValorInvestir(valorASerInvestido);
+        double saldoAtualDaConta = banco.getContaLogada().getSaldo();
         double rendimentoDoInvestimento = aplicarRendimento(valorASerInvestido);
 
         banco.getContaLogada().setSaldo(saldoAtualDaConta + (valorASerInvestido + rendimentoDoInvestimento));
@@ -22,7 +23,7 @@ public class Investir {
     //Deve retornar MenuOperacoes ao final
 
     public void validarValorInvestir(double valorASerInvestido) throws InsufficientFundsException{
-        if (saldoAtualDaConta < valorASerInvestido) {
+        if (banco.getContaLogada().getSaldo() < valorASerInvestido) {
             throw new IllegalArgumentException("Saldo insuficiente. Operação cancelada.");
         }
     }
