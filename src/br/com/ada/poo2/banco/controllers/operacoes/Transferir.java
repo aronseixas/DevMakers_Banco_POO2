@@ -17,9 +17,18 @@ public class Transferir {
 
         Conta contaDestino = banco.getMapaDeNumeroContaEConta().get(numeroContaDestino);
 
+        if (contaDestino == null) {
+            System.out.println("Conta destino não encontrada. Operação cancelada.");
+            return;
+        }
+
         System.out.println("Informe o valor a ser transferido: ");
         double valorASerTransferido = sc.nextDouble();
-        //TODO validar se o saldo é suficiente.
+
+        if (banco.getContaLogada().getSaldo() < valorASerTransferido) {
+            System.out.println("Saldo insuficiente. Operação cancelada.");
+            return;
+        }
 
         //sacar
         double taxa = banco.getContaLogada().getTaxas().taxa("TRANSFERENCIA");
@@ -29,10 +38,8 @@ public class Transferir {
 
         //depositar
         contaDestino.setSaldo(contaDestino.getSaldo() + valorASerTransferido);
-
         //banco.getMapaDeNumeroContaEConta().put(numeroContaDestino,contaDestino);
         //Ver como funciona o MAP e se a operação de fato modifica 1MAP ou todos e tb se ele só mexeu na conta da linha 18 desta classe
-
     }
     //Deve retornar MenuOperacoes ao final
 }
