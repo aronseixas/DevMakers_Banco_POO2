@@ -26,7 +26,6 @@ public class Logar {
 
     }
 
-
     public void pedirSenha() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Digite sua senha: ");

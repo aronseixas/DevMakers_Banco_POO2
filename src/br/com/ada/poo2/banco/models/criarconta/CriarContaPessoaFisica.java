@@ -14,6 +14,7 @@ import br.com.ada.poo2.banco.models.taxas.TaxasPF;
 import java.util.ArrayList;
 import java.util.List;
 
+import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;
 
 public class CriarContaPessoaFisica implements ICriarConta {
     Conta contaCorrente, contaPoupanca, contaInvestimento;
@@ -37,6 +38,9 @@ public class CriarContaPessoaFisica implements ICriarConta {
                 EPessoa.FISICA,
                 ETipoConta.CORRENTE);
         listaDeContas.add(contaCorrente);
+        banco.getMapaDeNumeroContaEConta().put(identificadorDoUsuarioContaCorrente, contaCorrente);
+
+
     }
 
     private void criarContaPoupanca() {
@@ -48,6 +52,7 @@ public class CriarContaPessoaFisica implements ICriarConta {
                 EPessoa.FISICA,
                 ETipoConta.POUPANCA);
         listaDeContas.add(contaPoupanca);
+        banco.getMapaDeNumeroContaEConta().put(identificadorDoUsuarioContaPoupanca, contaPoupanca);
     }
 
     private void criarContaInvestimento() {
@@ -59,6 +64,7 @@ public class CriarContaPessoaFisica implements ICriarConta {
                 EPessoa.FISICA,
                 ETipoConta.INVESTIMENTO);
         listaDeContas.add(contaInvestimento);
+        banco.getMapaDeNumeroContaEConta().put(identificadorDoUsuarioContaInvestimento, contaInvestimento);
     }
 
 }
