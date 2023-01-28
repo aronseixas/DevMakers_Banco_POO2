@@ -37,8 +37,7 @@ public class MenuOperacoesView {
 
     public String receberOpcaoDoUsuario() {
         System.out.print("Digite uma opção: ");
-        String opcaoMenu = scanner.nextLine();
-        return opcaoMenu;
+        return scanner.nextLine();
     }
 
     public void direcionarOperacao(String opcaoMenu) {

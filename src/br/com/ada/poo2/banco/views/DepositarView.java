@@ -1,6 +1,6 @@
 package br.com.ada.poo2.banco.views;
 
-import br.com.ada.poo2.banco.applicacao.InvalidValueException;
+import br.com.ada.poo2.banco.exceptions.InvalidValueException;
 import br.com.ada.poo2.banco.controllers.operacoes.Depositar;
 
 import java.util.Scanner;

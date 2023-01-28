@@ -47,7 +47,6 @@ public class CriarContaPessoaFisica implements ICriarConta {
 
     }
 
-
     private void criarContaPoupanca(String CPF) {
         String numeroContaPoupanca = CPF + ".2";
         contaPoupanca = new ContaPoupanca(

@@ -1,10 +1,8 @@
 package br.com.ada.poo2.banco.controllers.operacoes;
 
-import br.com.ada.poo2.banco.applicacao.InsufficientFundsException;
-import br.com.ada.poo2.banco.applicacao.UserDoesNotExistException;
+import br.com.ada.poo2.banco.exceptions.InsufficientFundsException;
+import br.com.ada.poo2.banco.exceptions.UserDoesNotExistException;
 import br.com.ada.poo2.banco.models.contas.Conta;
-
-import java.util.Scanner;
 
 import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;
 

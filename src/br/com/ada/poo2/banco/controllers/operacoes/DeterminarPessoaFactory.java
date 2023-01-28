@@ -1,11 +1,9 @@
 package br.com.ada.poo2.banco.controllers.operacoes;
 
-import br.com.ada.poo2.banco.applicacao.InvalidInputException;
+import br.com.ada.poo2.banco.exceptions.InvalidInputException;
 import br.com.ada.poo2.banco.interfaces.IPessoaFactory;
 import br.com.ada.poo2.banco.models.factories.PessoaFisicaFactory;
 import br.com.ada.poo2.banco.models.factories.PessoaJuridicaFactory;
-
-import java.util.Scanner;
 
 import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;
 

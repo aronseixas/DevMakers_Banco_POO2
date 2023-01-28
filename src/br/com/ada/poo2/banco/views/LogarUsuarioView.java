@@ -1,6 +1,6 @@
 package br.com.ada.poo2.banco.views;
 
-import br.com.ada.poo2.banco.applicacao.UserDoesNotExistException;
+import br.com.ada.poo2.banco.exceptions.UserDoesNotExistException;
 import br.com.ada.poo2.banco.controllers.operacoes.LogarUsuario;
 
 import java.util.Scanner;

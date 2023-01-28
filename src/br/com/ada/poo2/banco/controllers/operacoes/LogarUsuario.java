@@ -1,10 +1,8 @@
 package br.com.ada.poo2.banco.controllers.operacoes;
 
-import br.com.ada.poo2.banco.applicacao.InvalidPasswordException;
-import br.com.ada.poo2.banco.applicacao.UserDoesNotExistException;
+import br.com.ada.poo2.banco.exceptions.InvalidPasswordException;
+import br.com.ada.poo2.banco.exceptions.UserDoesNotExistException;
 import br.com.ada.poo2.banco.models.pessoas.Pessoa;
-
-import java.util.Scanner;
 
 import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;
 

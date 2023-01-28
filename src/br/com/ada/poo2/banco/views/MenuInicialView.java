@@ -5,7 +5,7 @@ import br.com.ada.poo2.banco.controllers.menu.MenuInicialController;
 import java.util.Scanner;
 
 public class MenuInicialView {
-    static Scanner scan = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
 
 
     private MenuInicialController menuInicialController;
@@ -15,9 +15,8 @@ public class MenuInicialView {
     }
 
     public void iniciarMenuInicial() {
-        String opcaoMenu;
         exibirOpcoes();
-        opcaoMenu = receberOpcaoDoUsuario();
+        String opcaoMenu = receberOpcaoDoUsuario();
         direcionarOperacao(opcaoMenu);
     }
 
@@ -32,8 +31,7 @@ public class MenuInicialView {
     }
 
     public String receberOpcaoDoUsuario() {
-        String opcaoMenu = scan.nextLine();
-        return opcaoMenu;
+        return scanner.nextLine();
     }
 
     public void direcionarOperacao(String opcaoMenu) {

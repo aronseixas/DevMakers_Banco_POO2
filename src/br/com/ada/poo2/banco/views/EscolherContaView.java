@@ -22,7 +22,7 @@ public class EscolherContaView {
     public void mostrarContasDoUsuario() {
         int qtdeContasDoUsuario = escolherConta.pegarQtddDeContasDoUsuario();
 
-        for (int i = 1; i < qtdeContasDoUsuario; i++) {
+        for (int i = 1; i <= qtdeContasDoUsuario; i++) {
             System.out.println("Opção " + i
                     + " - Tipo: " + escolherConta.pegarTipoDaConta(i)
                     + " - Número: " + escolherConta.pegarNumeroDaConta(i));
@@ -31,9 +31,7 @@ public class EscolherContaView {
 
     public int pedirTipoDeConta() {
         System.out.println("Escolha a conta desejada:");
-
-        int tipoDeConta = scanner.nextInt();
-        return tipoDeConta;
+        return scanner.nextInt();
 
         //TODO fazer try catch
     }

@@ -1,6 +1,6 @@
 package br.com.ada.poo2.banco.views;
 
-import br.com.ada.poo2.banco.applicacao.InvalidInputException;
+import br.com.ada.poo2.banco.exceptions.InvalidInputException;
 import br.com.ada.poo2.banco.controllers.operacoes.DeterminarPessoaFactory;
 
 import java.util.Scanner;
@@ -14,10 +14,8 @@ public class DeterminarPessoaFactoryView {
     }
 
     public void iniciarDeterminarPessoaFactoryView() {
-        String tipoDePessoa;
-
         exibirOpcoesTipoDePessoa();
-        tipoDePessoa = receberTipoDePessoa();
+        String tipoDePessoa = receberTipoDePessoa();
         determinarPessoaFactory(tipoDePessoa);
     }
 

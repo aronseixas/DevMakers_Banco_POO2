@@ -52,8 +52,7 @@ public class CadastrarUsuarioView {
     }
 
     public String pedirIdentificadorDoUsuario() {
-        String identificador = scanner.nextLine();
-        return identificador;
+        return scanner.nextLine();
 
         // TODO validar  tamanho mínimo de CPF e de CNPJ
         // TODO validar se já há contas abertas naquele CPF/CNPJ

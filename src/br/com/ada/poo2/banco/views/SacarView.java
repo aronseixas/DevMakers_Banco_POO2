@@ -1,6 +1,6 @@
 package br.com.ada.poo2.banco.views;
 
-import br.com.ada.poo2.banco.applicacao.InsufficientFundsException;
+import br.com.ada.poo2.banco.exceptions.InsufficientFundsException;
 import br.com.ada.poo2.banco.controllers.operacoes.Sacar;
 
 import java.util.Scanner;

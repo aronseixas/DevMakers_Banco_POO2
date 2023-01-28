@@ -1,7 +1,6 @@
 package br.com.ada.poo2.banco.controllers.operacoes;
 
-import br.com.ada.poo2.banco.applicacao.InvalidPasswordException;
-import br.com.ada.poo2.banco.applicacao.InvalidValueException;
+import br.com.ada.poo2.banco.exceptions.InvalidValueException;
 import br.com.ada.poo2.banco.models.enums.ETipoConta;
 
 import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;

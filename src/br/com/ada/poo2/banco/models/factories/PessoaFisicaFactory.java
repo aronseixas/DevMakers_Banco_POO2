@@ -16,17 +16,13 @@ public class PessoaFisicaFactory implements IPessoaFactory {
     @Override
     public Pessoa criarUsuario(String nome, int senha) {
        ICriarUsuario criarUsuarioPessoaFisica = new CriarUsuarioPessoaFisica();
-       Pessoa usuario = criarUsuarioPessoaFisica.criarUsuario(nome, senha);
-       return usuario;
+       return criarUsuarioPessoaFisica.criarUsuario(nome, senha);
     }
 
     @Override
     public List<Conta> criarContasDoUsuario(String identificadorDoUsuario) {
         ICriarConta criarContaPessoaFisica = new CriarContaPessoaFisica();
-        List<Conta> contas = criarContaPessoaFisica.criarContas(identificadorDoUsuario);
-        return contas;
+        return criarContaPessoaFisica.criarContas(identificadorDoUsuario);
     }
-
-
 
 }
