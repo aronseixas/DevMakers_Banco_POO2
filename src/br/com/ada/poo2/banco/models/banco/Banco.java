@@ -5,13 +5,12 @@ import br.com.ada.poo2.banco.models.contas.Conta;
 import br.com.ada.poo2.banco.models.pessoas.Pessoa;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Banco {
     Map<String, Pessoa> mapaDeContas = new HashMap<String, Pessoa>();
     //Associa o <Número de Conta, Pessoa>
-    Map<String, Pessoa> mapaDeClientes = new HashMap<>();
+    Map<String, Pessoa> mapaIdentificadorEUsuario = new HashMap<>();
     Map<String, Conta> mapaDeNumeroContaEConta = new HashMap<>();
     Pessoa usuarioLogado;
     Conta contaLogada;
@@ -38,8 +37,8 @@ public class Banco {
         return mapaDeContas;
     }
 
-    public Map<String, Pessoa> getMapaDeClientes() {
-        return mapaDeClientes;
+    public Map<String, Pessoa> getMapaIdentificadorEUsuario() {
+        return mapaIdentificadorEUsuario;
     }
 
     public Conta getContaLogada() {

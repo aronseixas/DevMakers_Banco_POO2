@@ -5,11 +5,9 @@ import br.com.ada.poo2.banco.interfaces.ICriarUsuario;
 import br.com.ada.poo2.banco.interfaces.IPessoaFactory;
 import br.com.ada.poo2.banco.models.contas.Conta;
 import br.com.ada.poo2.banco.models.criarconta.CriarContaPessoaFisica;
-import br.com.ada.poo2.banco.models.criarconta.CriarContaPessoaJuridica;
 import br.com.ada.poo2.banco.models.criarusuario.CriarUsuarioPessoaFisica;
 import br.com.ada.poo2.banco.models.pessoas.Pessoa;
-import br.com.ada.poo2.banco.models.rendimento.RendimentoPJ;
-import br.com.ada.poo2.banco.models.taxas.TaxasPJ;
+
 
 import java.util.List;
 
@@ -28,5 +26,6 @@ public class PessoaJuridicaFactory implements IPessoaFactory {
         List<Conta> contas = criarContaPessoaJuridica.criarContas(identificadorDoUsuario);
         return contas;
     }
+
 
 }

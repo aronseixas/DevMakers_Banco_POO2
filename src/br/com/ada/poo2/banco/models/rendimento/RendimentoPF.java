@@ -4,6 +4,7 @@ import br.com.ada.poo2.banco.interfaces.IRendimento;
 import br.com.ada.poo2.banco.models.enums.ETipoConta;
 
 public class RendimentoPF implements IRendimento {
+
     @Override
     public double taxaRendimentoDeposito(ETipoConta tipoConta) {
 

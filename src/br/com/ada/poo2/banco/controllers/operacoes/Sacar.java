@@ -1,30 +1,31 @@
 package br.com.ada.poo2.banco.controllers.operacoes;
 
-import br.com.ada.poo2.banco.models.taxas.TaxasPJ;
 
-import java.util.Scanner;
+import br.com.ada.poo2.banco.applicacao.InsufficientFundsException;
+
 
 import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;
 
 public class Sacar {
-    public void executar() {
 
-        double taxa = banco.getContaLogada().getTaxas().taxa("SAQUE");
-        double saque = 0;
-        do {
-            Scanner sc = new Scanner(System.in);
-            System.out.println("Informe o valor para saque: ");
-            saque = sc.nextDouble();
-            if (saque <= 0) {
-                System.out.println("Valor inadequado.");
-            } else {
-                double saldoAtualDaConta = banco.getContaLogada().getSaldo();
-                double valorDescontadoDoSaldoAtualDaConta = saque * (1 + taxa);
-                banco.getContaLogada().setSaldo(saldoAtualDaConta - valorDescontadoDoSaldoAtualDaConta);
-            }
-        } while (saque <= 0);
+    public void sacarDaContaDoUsuario(double valorSacado) {
+        validarValorDoSaque(valorSacado);
+        double valorASerDescontadoDaConta = aplicarTaxaSobreSaque(valorSacado);
+        double saldoAtualDaConta = banco.getContaLogada().getSaldo();
+
+        banco.getContaLogada().setSaldo(saldoAtualDaConta - valorASerDescontadoDaConta);
+    }
+
+    private double aplicarTaxaSobreSaque(double valorSacado) {
+        double taxa;
+        taxa = banco.getContaLogada().getTaxas().taxa("SAQUE");
+        return valorSacado * (1 + taxa);
+    }
+
+
+    public void validarValorDoSaque(double saque) throws InsufficientFundsException {
+        if (saque <= 0) {
+            throw new InsufficientFundsException();
+        }
     }
 }
-    //Deve retornar MenuOperacoes ao final
-    //TODO testar colocar tudo no try catch.
-

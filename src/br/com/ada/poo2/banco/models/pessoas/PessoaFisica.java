@@ -9,9 +9,6 @@ public class PessoaFisica extends Pessoa {
         super(nome, senha, tipoDePessoa);
     }
 
-    public String toString(){
-        return getNome();
-    }
 
     @Override
     public String getIdentificador() {

@@ -1,55 +1,80 @@
 package br.com.ada.poo2.banco.applicacao;
 
-import br.com.ada.poo2.banco.controllers.menu.MenuInicial;
+import br.com.ada.poo2.banco.controllers.menu.MenuInicialController;
+import br.com.ada.poo2.banco.controllers.menu.MenuOperacoesController;
+import br.com.ada.poo2.banco.views.MenuOperacoesView;
+import br.com.ada.poo2.banco.controllers.operacoes.*;
+import br.com.ada.poo2.banco.views.*;
 import br.com.ada.poo2.banco.models.banco.Banco;
 
 public class Aplicacao {
     public static Banco banco = new Banco();
 
+    private MenuInicialView menuInicialView;
+    private MenuOperacoesView menuOperacoesView;
+    private MenuInicialController menuInicialController;
+    
+    private CadastrarUsuarioView cadastrarUsuarioView;
+    
+    private   DeterminarPessoaFactoryView determinarPessoaFactoryView;
+
+    private MenuOperacoesController menuOperacoesController;
+
     public static void main(String[] args) {
         Aplicacao aplicacao = new Aplicacao();
-        aplicacao.exibirMenuInicial();
-
-//        Scanner scan = new Scanner(System.in);
-//
-//
-//        List<Conta> contas = new ArrayList<>();
-//
-//        System.out.print("NOME: ");
-//        String nome = scan.nextLine();
-//        ContaCorrente contaCorrente = new ContaCorrente(1, 11, 1000, new RendimentoPF(), new TaxasPF());
-//        contas.add(contaCorrente);
-//
-//        PessoaFisica fulano = new PessoaFisica(nome, contas, "1234");
-//
-//        fulano.getContas().get(0).sacar(100);
-//        System.out.println(fulano.getContas().get(0).getSaldo());
-
-/*
-        ContaCorrente contaCorrente = new ContaCorrente(1, 11, 1000, new RendimentoPF(), new TaxasPF());
-        //contaCorrente.depositar(100);
-        System.out.println("\n\n\n ");
-        contaCorrente.depositar(50);
-        System.out.println("\n\n\n");
-        //contaCorrente.checarSaldo();
-/*
-        //System.out.println(" \n\n ");
-        ContaCorrente contaCorrentePJ = new ContaCorrente(1, 11, 1000, new RendimentoPJ(), new TaxasPJ());
-        contaCorrentePJ.sacar(100);
-        System.out.println(" \n\n ");
-        ContaPoupanca contaPoupancaPF = new ContaPoupanca(1, 11, 0, new RendimentoPF());
-        contaPoupancaPF.depositar(100);
-        System.out.println(" \n\n ");
-        ContaInvestimento contaInvestimento = new ContaInvestimento(123, 234, 1000, new RendimentoPF(), new TaxasPJ());
-        contaInvestimento.sacar(100);
-        System.out.println(" \n\n ");
-/*
-        ContaInvestimento contaInvestimentoPJ = new ContaInvestimento(123, 234, 100, new RendimentoPJ());
-        contaInvestimentoPJ.depositar(200);
-*/
+        aplicacao.setUpMenuOperacoesController();
+        aplicacao.setUpDeterminarFactoryView();
+        aplicacao.setUpCadastrarUsuarioVIew();
+        aplicacao.setUpMenuOperacoesView();
+        aplicacao.setUpMenuInicialController();
+        aplicacao.setUpMenuInicialView();
+        aplicacao.iniciarMenuInicial();
     }
 
-    public void exibirMenuInicial() {
-        MenuInicial.iniciarPrimeiroMenu();
+
+    public void setUpMenuOperacoesController() {
+        ConsultarSaldoView consultarSaldoView = new ConsultarSaldoView();
+
+        menuOperacoesController = new MenuOperacoesController(
+                consultarSaldoView
+        );
+    }
+    public void setUpDeterminarFactoryView() {
+        determinarPessoaFactoryView = new DeterminarPessoaFactoryView(
+                new DeterminarPessoaFactory()
+        );
+    }
+    
+    public void setUpCadastrarUsuarioVIew() {
+        cadastrarUsuarioView = new CadastrarUsuarioView(
+                new CadastrarUsuario(),
+                new CriarConta()
+        );
+    }
+    public void setUpMenuOperacoesView() {
+        menuOperacoesView = new MenuOperacoesView(
+                menuOperacoesController);
+    }
+    public void setUpMenuInicialController() {
+        LogarUsuario logarUsuario = new LogarUsuario();
+        LogarUsuarioView logarUsuarioView = new LogarUsuarioView();
+        EscolherContaView escolherContaView = new EscolherContaView();
+
+        menuInicialController = new MenuInicialController(
+                escolherContaView,
+                logarUsuario,
+                logarUsuarioView,
+                menuOperacoesView,
+                cadastrarUsuarioView,
+                determinarPessoaFactoryView);
+    }
+    public void setUpMenuInicialView() {
+
+        menuInicialView = new MenuInicialView(
+                menuInicialController);
+    }
+
+    public void iniciarMenuInicial() {
+        menuInicialView.iniciarMenuInicial();
     }
 }

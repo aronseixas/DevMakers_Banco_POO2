@@ -10,7 +10,6 @@ public abstract class Pessoa {
     private List<Conta> contas;
     private int senha;
     private EPessoa tipoDePessoa;
-    private String identificador;
 
     public Pessoa(String nome, int senha, EPessoa tipoDePessoa) {
         this.nome = nome;

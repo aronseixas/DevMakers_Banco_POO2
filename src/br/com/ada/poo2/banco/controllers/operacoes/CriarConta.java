@@ -10,7 +10,7 @@ import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;
 public class CriarConta {
     Pessoa usuarioCadastrado;
 
-    public void executar(Pessoa usuarioCadastrado) {
+    public void iniciarCriarConta(Pessoa usuarioCadastrado) {
 
         List<Conta> listaDeContasDoUsuario;
         this.usuarioCadastrado = usuarioCadastrado;

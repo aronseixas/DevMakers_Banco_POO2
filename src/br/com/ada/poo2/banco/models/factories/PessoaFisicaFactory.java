@@ -12,6 +12,7 @@ import br.com.ada.poo2.banco.models.pessoas.Pessoa;
 import java.util.List;
 
 public class PessoaFisicaFactory implements IPessoaFactory {
+
     @Override
     public Pessoa criarUsuario(String nome, int senha) {
        ICriarUsuario criarUsuarioPessoaFisica = new CriarUsuarioPessoaFisica();
@@ -25,5 +26,7 @@ public class PessoaFisicaFactory implements IPessoaFactory {
         List<Conta> contas = criarContaPessoaFisica.criarContas(identificadorDoUsuario);
         return contas;
     }
+
+
 
 }
