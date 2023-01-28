@@ -54,10 +54,12 @@ public class MenuOperacoes {
                 case "4" :
                     System.out.println("\nOpção Investir\n");
                     investir.executar();
+                    consultarSaldo.executar();
                     break;
                 case "5" :
                     System.out.println("\nOpção Transferir\n");
                     transferir.executar();
+                    consultarSaldo.executar();
                     break;
                 case "6" :
                     System.out.println("\nOpção Escolher conta\n");
