@@ -1,58 +1,36 @@
 package br.com.ada.poo2.banco.controllers.operacoes;
-
-import br.com.ada.poo2.banco.interfaces.ICriarConta;
+import br.com.ada.poo2.banco.interfaces.IPessoaFactory;
 import br.com.ada.poo2.banco.models.contas.Conta;
-import br.com.ada.poo2.banco.models.criarconta.CriarContaPessoaFisica;
-import br.com.ada.poo2.banco.models.criarconta.CriarContaPessoaJuridica;
-import br.com.ada.poo2.banco.models.enums.EPessoa;
 import br.com.ada.poo2.banco.models.pessoas.Pessoa;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;
 
 public class CriarConta {
-    EPessoa tipoDePessoa;
-    ICriarConta criadorDeConta;
     Pessoa usuarioCadastrado;
-    List<Conta> listaDeContasDoUsuario = new ArrayList<>();
 
     public void executar(Pessoa usuarioCadastrado) {
-        System.out.println("----Passei por CriarConta ---");
+
+        List<Conta> listaDeContasDoUsuario;
         this.usuarioCadastrado = usuarioCadastrado;
-        tipoDePessoa = usuarioCadastrado.getTipoDePessoa();
-        determinarClasseDeCriacaoDaConta();
-        criarConta();
-        adicionarContaAoUsuario();
-        associarNumeroDaContaAoUsuarioNoBanco();
-        System.out.println("---Terminei de passar por CriarConta ----");
+
+        listaDeContasDoUsuario = criarConta();
+        adicionarContaAoUsuario(listaDeContasDoUsuario);
+        associarNumeroDaContaAoUsuarioNoBanco(listaDeContasDoUsuario);
     }
 
-
-    private void determinarClasseDeCriacaoDaConta() {
-        switch (tipoDePessoa) {
-            case FISICA:
-                criadorDeConta = new CriarContaPessoaFisica();
-                break;
-            case JURIDICA:
-                criadorDeConta = new CriarContaPessoaJuridica();
-                break;
-            default:
-                System.out.println("Erro na hora de criar a conta");
-        }
+    private List<Conta> criarConta() {
+        String identificadorDoUsuario = usuarioCadastrado.getIdentificador();
+        IPessoaFactory pessoaFactory = banco.getPessoaFactory();
+        return pessoaFactory.criarContasDoUsuario(identificadorDoUsuario);
     }
 
-    private void criarConta() {
-        listaDeContasDoUsuario = criadorDeConta.criarContas(usuarioCadastrado.getIdentificador());
-        //TODO entender esse erro.
-    }
-//TODO adicionar método para geração de inteiros aleatórios.
-    private void adicionarContaAoUsuario() {
+    private void adicionarContaAoUsuario(List<Conta> listaDeContasDoUsuario) {
         usuarioCadastrado.setContas(listaDeContasDoUsuario);
     }
 
-    private void associarNumeroDaContaAoUsuarioNoBanco() {
+    private void associarNumeroDaContaAoUsuarioNoBanco(List<Conta> listaDeContasDoUsuario) {
         for (Conta conta: listaDeContasDoUsuario) {
             banco.getMapaDeContas().put(conta.getNumero(), usuarioCadastrado);
         }

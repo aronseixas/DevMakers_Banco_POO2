@@ -1,5 +1,6 @@
 package br.com.ada.poo2.banco.models.banco;
 
+import br.com.ada.poo2.banco.interfaces.IPessoaFactory;
 import br.com.ada.poo2.banco.models.contas.Conta;
 import br.com.ada.poo2.banco.models.pessoas.Pessoa;
 
@@ -8,12 +9,13 @@ import java.util.List;
 import java.util.Map;
 
 public class Banco {
-    Map<String, Pessoa> mapaDeContas = new HashMap<>();
+    Map<String, Pessoa> mapaDeContas = new HashMap<String, Pessoa>();
     //Associa o <Número de Conta, Pessoa>
     Map<String, Pessoa> mapaDeClientes = new HashMap<>();
-    Map<String, Conta> mapaDeNumeroContaEConta = new HashMap<>();
     Pessoa usuarioLogado;
     Conta contaLogada;
+
+    IPessoaFactory pessoaFactory;
 
 
 //TODO Deixar pré-carregado uma Pessoa Física e uma Pessoa Jurídica com cada tipo de conta para testes
@@ -47,8 +49,11 @@ public class Banco {
         this.contaLogada = contaLogada;
     }
 
-    public Map<String, Conta> getMapaDeNumeroContaEConta() {
-        return mapaDeNumeroContaEConta;
+    public IPessoaFactory getPessoaFactory() {
+        return pessoaFactory;
+    }
+
+    public void setPessoaFactory(IPessoaFactory pessoaFactory) {
+        this.pessoaFactory = pessoaFactory;
     }
 }
-

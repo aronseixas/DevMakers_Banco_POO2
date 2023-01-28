@@ -10,15 +10,12 @@ public abstract class Pessoa {
     private List<Conta> contas;
     private int senha;
     private EPessoa tipoDePessoa;
-
     private String identificador;
 
-
-    public Pessoa(String nome, int senha, EPessoa tipoDePessoa, String identificador) {
+    public Pessoa(String nome, int senha, EPessoa tipoDePessoa) {
         this.nome = nome;
         this.senha = senha;
         this.tipoDePessoa = tipoDePessoa;
-        this.identificador = identificador;
     }
 
     public String getNome() {
@@ -41,9 +38,11 @@ public abstract class Pessoa {
         return tipoDePessoa;
     }
 
-    public String getIdentificador() {
-        return identificador;
-    }
+    abstract public String getIdentificador();
+
+    abstract public void setIdentificador(String identificador);
+
+    abstract public String tipoDeIdentificador();
 
     public void setContas(List<Conta> contas) {
         this.contas = contas;

@@ -1,10 +1,8 @@
 package br.com.ada.poo2.banco.controllers.operacoes;
-
-import br.com.ada.poo2.banco.models.enums.EPessoa;
+import br.com.ada.poo2.banco.interfaces.IPessoaFactory;
 import br.com.ada.poo2.banco.models.pessoas.Pessoa;
-import br.com.ada.poo2.banco.models.pessoas.PessoaFisica;
-import br.com.ada.poo2.banco.models.pessoas.PessoaJuridica;
 
+import java.util.Map;
 import java.util.Scanner;
 
 import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;
@@ -12,96 +10,76 @@ import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;
 public class CadastrarUsuario {
 
     Scanner scanner = new Scanner(System.in);
-    String inputTipoDePessoa, identificadorDoUsuario, nomeDoUsuario;
-    int senhaDoUsuario;
-    EPessoa tipoDePessoa;
     Pessoa usuarioCadastrado;
 
     public void executar() {
-        System.out.println("----Entrei em CadastrarUsuario----");
-        exibirOpcoesDoTipoDePessoa();
-        determinarTipoDePessoa();
-        pedirIdentificadorDoUsuario();
-        pedirNomeDoUsuario();
-        pedirSenhaDoUsuario();
-        criarUsuario();
-        adicionarUsuarioAoBanco();
-        System.out.println("----Terminei de passar em CadastrarUsuário----");
+
+        String identificador, nome, tipoDeIdentificador;
+        int senha;
+
+        nome = pedirNomeDoUsuario();
+
+        senha = pedirSenhaDoUsuario();
+
+        usuarioCadastrado = criarUsuario(nome, senha);
+
+        exibirOpcoesIdentificadorDoUsuario();
+
+        identificador = pedirIdentificadorDoUsuario();
+
+        adicionarIdentificadorAoUsuario(identificador);
+
+        adicionarUsuarioAoBanco(identificador);
     }
 
-    private void exibirOpcoesDoTipoDePessoa() {
-        System.out.println("Qual tipo de conta você deseja abrir:");
-        System.out.println("Opção 1 - Pessoa Física");
-        System.out.println("Opção 2 - Pessoa Jurídica");
-        inputTipoDePessoa = scanner.nextLine();
-    }
-
-    private void determinarTipoDePessoa() {
-        switch (inputTipoDePessoa) {
-            case "1" :
-                tipoDePessoa = EPessoa.FISICA;
-                break;
-            case "2" :
-                tipoDePessoa = EPessoa.JURIDICA;
-                break;
-            default:
-                System.out.println("Erro na hora de determinar o tipo de pessoa de usuário");
-        }
-    }
-
-    private void pedirIdentificadorDoUsuario() {
-        switch (tipoDePessoa) {
-            case FISICA:
-                System.out.println("Digite seu CPF: ");
-                break;
-            case JURIDICA:
-                System.out.println("Digite seu CNPJ: ");
-                break;
-            default:
-                System.out.println("Erro na hora de pedir o CPF/CNPJ");
-                executar();
-        }
-        identificadorDoUsuario = scanner.nextLine();
-    }
-
-    private void pedirNomeDoUsuario(){
+    private String pedirNomeDoUsuario() {
+        String nome;
         System.out.println("Digite o nome:");
-        nomeDoUsuario = scanner.nextLine();
+        nome = scanner.nextLine();
+        // TODO validar e try-catch
+        return nome;
     }
 
-    private void pedirSenhaDoUsuario() {
+    private int pedirSenhaDoUsuario() {
+        int senha;
         System.out.println("Digite a senha (somente números):");
-        senhaDoUsuario = Integer.parseInt(scanner.nextLine());
-        //TODO fazer um try catch para o tipo de entrada.
+        senha = Integer.parseInt(scanner.nextLine());
+        // TODO fazer um try catch para o tipo de entrada.
+        return senha;
     }
 
-    private void criarUsuario() {
-        switch(tipoDePessoa) {
-            case FISICA:
-                usuarioCadastrado = new PessoaFisica(
-                        nomeDoUsuario,
-                        senhaDoUsuario,
-                        tipoDePessoa,
-                        identificadorDoUsuario);
-                break;
-            case JURIDICA:
-                usuarioCadastrado = new PessoaJuridica(
-                        nomeDoUsuario,
-                        senhaDoUsuario,
-                        tipoDePessoa,
-                        identificadorDoUsuario);
-                break;
-            default:
-                System.out.println("Erro na hora de criar o usuário");
-                //TODO é possível fazer uma interface para criação de usuário
-        }
+    public Pessoa criarUsuario(String nome, int senha) {
+        IPessoaFactory pessoaFactory = banco.getPessoaFactory();
+        return pessoaFactory.criarUsuario(nome, senha);
     }
 
-    private void adicionarUsuarioAoBanco() {
-        banco.getMapaDeClientes().put(identificadorDoUsuario, usuarioCadastrado);
+
+    private void exibirOpcoesIdentificadorDoUsuario() {
+        String tipoDeIdentificador = usuarioCadastrado.tipoDeIdentificador();
+        System.out.println("Digite o seu " + tipoDeIdentificador + ":");
+    }
+
+    public String pedirIdentificadorDoUsuario() {
+        String identificador;
+        identificador = scanner.nextLine();
+        // TODO validar e try-catch
+        return identificador;
+        // TODO validar se já há contas abertars naquele CPF/CNPJ
+    }
+
+
+    public void adicionarIdentificadorAoUsuario(String identificador) {
+        usuarioCadastrado.setIdentificador(identificador);
+    }
+
+    private void adicionarUsuarioAoBanco(String identificador) {
+        Map<String, Pessoa> mapaIdentificadorUsuario;
+        mapaIdentificadorUsuario = banco.getMapaDeClientes();
+        mapaIdentificadorUsuario.put(identificador, usuarioCadastrado);
     }
 
     public Pessoa getUsuarioCadastrado() {
         return this.usuarioCadastrado;
     }
+    // TODO talvez colocar em sua própria classe
 }
