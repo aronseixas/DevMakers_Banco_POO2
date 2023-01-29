@@ -1,11 +1,9 @@
 package br.com.ada.poo2.banco.controllers.operacoes;
-
 import br.com.ada.poo2.banco.exceptions.InvalidInputException;
 import br.com.ada.poo2.banco.exceptions.InvalidValueException;
 import br.com.ada.poo2.banco.exceptions.UserDoesNotExistException;
 import br.com.ada.poo2.banco.models.contas.Conta;
 import br.com.ada.poo2.banco.models.enums.ETipoConta;
-
 import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;
 
 public class DepositarController {
@@ -25,11 +23,9 @@ public class DepositarController {
         }
     }
 
-
     public void depositarContaUsuario(double valor) {
         double rendimento, saldoAtualDaConta;
         validarValorDeposito(valor);
-
         ETipoConta tipoContaLogada = contaDestino.getTipoConta();
         rendimento = contaDestino.getRendimento().taxaRendimentoDeposito(tipoContaLogada);
         saldoAtualDaConta = contaDestino.getSaldo();

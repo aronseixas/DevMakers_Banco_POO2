@@ -1,11 +1,9 @@
 package br.com.ada.poo2.banco.views;
-
 import br.com.ada.poo2.banco.controllers.menu.MenuInicialController;
-
 import java.util.Scanner;
 
 public class MenuInicialView {
-    static Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
     private MenuInicialController menuInicialController;
 
     public MenuInicialView(MenuInicialController menuInicialController) {
@@ -13,6 +11,7 @@ public class MenuInicialView {
     }
 
     public void iniciarMenuInicial() {
+
         try {
             exibirOpcoes();
             int opcaoMenu = receberOpcaoDoUsuario();

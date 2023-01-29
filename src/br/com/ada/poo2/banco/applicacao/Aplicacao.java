@@ -1,5 +1,4 @@
 package br.com.ada.poo2.banco.applicacao;
-
 import br.com.ada.poo2.banco.controllers.menu.MenuInicialController;
 import br.com.ada.poo2.banco.controllers.menu.MenuOperacoesController;
 import br.com.ada.poo2.banco.views.MenuOperacoesView;
@@ -35,7 +34,6 @@ public class Aplicacao {
         InvestirView investirView = new InvestirView();
         EscolherContaView escolherContaView = new EscolherContaView();
         DeslogarController deslogarController = new DeslogarController();
-
         menuOperacoesController = new MenuOperacoesController(
                 consultarSaldoView,
                 sacarView,
@@ -46,12 +44,12 @@ public class Aplicacao {
                 deslogarController
         );
     }
+
     public void setUpDeterminarFactoryView() {
         determinarPessoaFactoryView = new DeterminarPessoaFactoryView(
                 new DeterminarPessoaFactoryController()
         );
     }
-
 
     public void setUpCadastrarUsuarioVIew() {
         cadastrarUsuarioView = new CadastrarUsuarioView(
@@ -59,10 +57,12 @@ public class Aplicacao {
                 new CriarContaController()
         );
     }
+
     public void setUpMenuOperacoesView() {
         menuOperacoesView = new MenuOperacoesView(
                 menuOperacoesController);
     }
+
     public void setUpMenuInicialController() {
         LogarUsuarioController logarUsuarioController = new LogarUsuarioController();
         LogarUsuarioView logarUsuarioView = new LogarUsuarioView();
@@ -76,6 +76,7 @@ public class Aplicacao {
                 cadastrarUsuarioView,
                 determinarPessoaFactoryView);
     }
+
     public void setUpMenuInicialView() {
         menuInicialView = new MenuInicialView(
                 menuInicialController);

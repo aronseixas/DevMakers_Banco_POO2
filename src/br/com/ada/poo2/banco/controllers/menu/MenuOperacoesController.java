@@ -1,5 +1,4 @@
 package br.com.ada.poo2.banco.controllers.menu;
-
 import br.com.ada.poo2.banco.controllers.operacoes.DeslogarController;
 import br.com.ada.poo2.banco.exceptions.NoFundsException;
 import br.com.ada.poo2.banco.views.*;
@@ -11,8 +10,8 @@ public class MenuOperacoesController {
     private TransferirView transferirView;
     private InvestirView investirView;
     private EscolherContaView escolherContaView;
-
     private DeslogarController deslogarController;
+
     public MenuOperacoesController(ConsultarSaldoView consultarSaldoView,
                                    SacarView sacarView,
                                    DepositarView depositarView,
@@ -68,5 +67,4 @@ public class MenuOperacoesController {
     public void deslogar() {
         deslogarController.executar();
     }
-
 }

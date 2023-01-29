@@ -1,10 +1,8 @@
 package br.com.ada.poo2.banco.models.rendimento;
-
 import br.com.ada.poo2.banco.interfaces.IRendimento;
 import br.com.ada.poo2.banco.models.enums.ETipoConta;
 
 public class RendimentoPJ implements IRendimento {
-
     @Override
     public double taxaRendimentoDeposito(ETipoConta tipoConta) {
        return 0;

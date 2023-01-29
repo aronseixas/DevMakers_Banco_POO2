@@ -1,5 +1,4 @@
 package br.com.ada.poo2.banco.models.contas;
-
 import br.com.ada.poo2.banco.interfaces.IConta;
 import br.com.ada.poo2.banco.interfaces.IRendimento;
 import br.com.ada.poo2.banco.interfaces.ITaxas;
@@ -16,8 +15,6 @@ public  class Conta implements IConta {
 
     public Conta(String numero, double saldo, IRendimento rendimento, ITaxas taxas, EPessoa pessoa, ETipoConta tipoConta) {
         this.numero = numero;
-        //Número vai ser com base no identificador da Pessoa
-            //PessoaFIsica - CPF e PessoaJuridica - CNPJ
         this.saldo = saldo;
         this.rendimento = rendimento;
         this.taxas = taxas;

@@ -1,11 +1,8 @@
 package br.com.ada.poo2.banco.views;
-
 import br.com.ada.poo2.banco.controllers.operacoes.LogarUsuarioController;
-
 import java.util.Scanner;
 
 public class LogarUsuarioView {
-
     Scanner scanner = new Scanner(System.in);
     LogarUsuarioController logarUsuarioController = new LogarUsuarioController();
 

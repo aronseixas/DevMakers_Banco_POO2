@@ -2,14 +2,11 @@ package br.com.ada.poo2.banco.controllers.operacoes;
 import br.com.ada.poo2.banco.interfaces.IPessoaFactory;
 import br.com.ada.poo2.banco.models.contas.Conta;
 import br.com.ada.poo2.banco.models.pessoas.Pessoa;
-
 import java.util.List;
-
 import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;
 
 public class CriarContaController {
     Pessoa usuario;
-
     public void iniciarCriarConta() {
         List<Conta> listaDeContasDoUsuario;
         this.usuario = banco.getUsuarioCadastrado();

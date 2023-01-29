@@ -1,25 +1,21 @@
 package br.com.ada.poo2.banco.views;
-
 import br.com.ada.poo2.banco.exceptions.InvalidInputException;
 import br.com.ada.poo2.banco.exceptions.InvalidValueException;
 import br.com.ada.poo2.banco.controllers.operacoes.DepositarController;
 import br.com.ada.poo2.banco.exceptions.UserDoesNotExistException;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class DepositarView {
-
     Scanner scanner = new Scanner(System.in);
-
     boolean usuarioDepositouNaPropriaConta;
     DepositarController depositarController = new DepositarController();
 
     public void iniciarDepositar(){
+
         try {
             int opcaoDeposito;
             double valor;
-
             exibirOpcoesDeDeposito();
             opcaoDeposito = pedirOpcaoDeDeposito();
             scanner.nextLine();
@@ -57,7 +53,6 @@ public class DepositarView {
         }
         return numeroContaDestino;
     }
-
 
     public String pedirContaParaDeposito(){
         System.out.println("Informe a conta para depósito: ");

@@ -1,9 +1,7 @@
 package br.com.ada.poo2.banco.views;
-
 import br.com.ada.poo2.banco.controllers.operacoes.CadastrarUsuarioController;
 import br.com.ada.poo2.banco.controllers.operacoes.CriarContaController;
 import br.com.ada.poo2.banco.exceptions.UserAlreadyExistsException;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -18,6 +16,7 @@ public class CadastrarUsuarioView {
         this.cadastrarUsuarioController = cadastrarUsuarioController;
         this.criarContaController = criarContaController;
     }
+
     public void iniciarCadastrarUsuarioView() {
         String nome, identificador;
         int senha;
@@ -42,16 +41,15 @@ public class CadastrarUsuarioView {
             iniciarCadastrarUsuarioView();
         }
     }
+
     public String pedirNomeDoUsuario() {
         System.out.println("Digite o nome:");
         return scanner.nextLine();
-        //TODO validar quantidade mínima de caracteres
     }
 
     private int pedirSenhaDoUsuario() {
         System.out.println("Digite a senha (somente números):");
         return scanner.nextInt();
-        //TODO validar quantidade mínima de caracteres
     }
 
     public void exibirOpcoesIdentificadorDoUsuario() {
@@ -61,6 +59,5 @@ public class CadastrarUsuarioView {
 
     public String pedirIdentificadorDoUsuario() {
         return scanner.nextLine();
-        // TODO validar  tamanho mínimo de CPF e de CNPJ
     }
 }

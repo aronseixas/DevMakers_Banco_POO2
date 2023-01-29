@@ -1,16 +1,10 @@
 package br.com.ada.poo2.banco.controllers.operacoes;
-
 import br.com.ada.poo2.banco.models.contas.Conta;
 import br.com.ada.poo2.banco.models.enums.ETipoConta;
-
 import java.util.List;
-
-
 import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;
 
 public class EscolherContaController {
-
-
     public int pegarQtddDeContasDoUsuario() {
         return banco.getUsuarioLogado().getContas().size();
     }

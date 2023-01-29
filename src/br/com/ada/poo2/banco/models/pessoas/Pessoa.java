@@ -1,8 +1,5 @@
 package br.com.ada.poo2.banco.models.pessoas;
-
-import br.com.ada.poo2.banco.models.contas.Conta;
 import br.com.ada.poo2.banco.models.enums.EPessoa;
-
 import java.util.List;
 
 public abstract class Pessoa<T> {
@@ -43,4 +40,3 @@ public abstract class Pessoa<T> {
         this.contas = contas;
     }
 }
-

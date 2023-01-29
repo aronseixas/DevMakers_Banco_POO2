@@ -1,9 +1,7 @@
 package br.com.ada.poo2.banco.views;
-
 import br.com.ada.poo2.banco.exceptions.InsufficientFundsException;
 import br.com.ada.poo2.banco.exceptions.UserDoesNotExistException;
 import br.com.ada.poo2.banco.controllers.operacoes.TransferirController;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -12,6 +10,7 @@ public class TransferirView {
     TransferirController transferirController = new TransferirController();
 
     public void iniciarTransferir(){
+
         try {
             double valor;
             String numeroContaDestino;
@@ -40,5 +39,4 @@ public class TransferirView {
         System.out.println("Informe o valor a ser transferido: ");
         return scanner.nextDouble();
     }
-
 }

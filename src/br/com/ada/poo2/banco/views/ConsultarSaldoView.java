@@ -1,5 +1,4 @@
 package br.com.ada.poo2.banco.views;
-
 import br.com.ada.poo2.banco.controllers.operacoes.ConsultarSaldoController;
 
 public class ConsultarSaldoView {
@@ -14,4 +13,3 @@ public class ConsultarSaldoView {
         System.out.printf("Saldo atual: R$ %.2f%n ", saldo);
     }
 }
-

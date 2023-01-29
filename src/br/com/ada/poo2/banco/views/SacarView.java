@@ -1,19 +1,16 @@
 package br.com.ada.poo2.banco.views;
-
 import br.com.ada.poo2.banco.exceptions.InsufficientFundsException;
 import br.com.ada.poo2.banco.controllers.operacoes.SacarController;
 import br.com.ada.poo2.banco.exceptions.InvalidValueException;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-
 public class SacarView {
-
     Scanner scanner = new Scanner(System.in);
     SacarController sacarController = new SacarController();
 
     public void iniciarSacar() {
+
         try {
             double valor;
 
@@ -36,5 +33,4 @@ public class SacarView {
         System.out.println("Informe o valor para saque: ");
         return scanner.nextDouble();
     }
-
 }

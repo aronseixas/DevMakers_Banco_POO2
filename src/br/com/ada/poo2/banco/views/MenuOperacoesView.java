@@ -1,14 +1,9 @@
 package br.com.ada.poo2.banco.views;
-
 import br.com.ada.poo2.banco.controllers.menu.MenuOperacoesController;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MenuOperacoesView {
-
-    //TODO apresentar nome de usuário e qual a conta logada;
-
     Scanner scanner = new Scanner(System.in);
     private MenuOperacoesController menuOperacoesController;
 
@@ -17,6 +12,7 @@ public class MenuOperacoesView {
     }
 
     public void iniciarMenuOperacoesView() {
+
         try {
             exibirOpcoes();
             int opcaoMenu = receberOpcaoDoUsuario();

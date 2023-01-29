@@ -1,24 +1,16 @@
 package br.com.ada.poo2.banco.controllers.menu;
-
 import br.com.ada.poo2.banco.controllers.operacoes.LogarUsuarioController;
 import br.com.ada.poo2.banco.exceptions.InvalidPasswordException;
 import br.com.ada.poo2.banco.exceptions.UserDoesNotExistException;
 import br.com.ada.poo2.banco.views.*;
-
 import java.util.InputMismatchException;
 
 public class MenuInicialController {
-
     private EscolherContaView escolherContaView;
-
     private LogarUsuarioController logarUsuarioController;
-
     private LogarUsuarioView logarUsuarioView;
-
     private MenuOperacoesView menuOperacoesView;
-
     private CadastrarUsuarioView cadastrarUsuarioView;
-
     private DeterminarPessoaFactoryView determinarPessoaFactoryView;
 
     public MenuInicialController(

@@ -1,17 +1,15 @@
 package br.com.ada.poo2.banco.views;
-
 import br.com.ada.poo2.banco.controllers.operacoes.EscolherContaController;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class EscolherContaView {
-
     Scanner scanner = new Scanner(System.in);
     EscolherContaController escolherContaController = new EscolherContaController();
 
     public void iniciarEscolherContaView() {
         int tipoDeConta;
+
         try {
             mostrarContasDoUsuario();
             tipoDeConta = pedirTipoDeConta();
@@ -26,7 +24,6 @@ public class EscolherContaView {
 
     public void mostrarContasDoUsuario() {
         int qtdeContasDoUsuario = escolherContaController.pegarQtddDeContasDoUsuario();
-
         for (int i = 1; i <= qtdeContasDoUsuario; i++) {
             System.out.println("Opção " + i
                     + " - Tipo: " + escolherContaController.pegarTipoDaConta(i)

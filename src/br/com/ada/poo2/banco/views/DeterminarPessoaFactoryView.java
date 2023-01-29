@@ -1,8 +1,6 @@
 package br.com.ada.poo2.banco.views;
-
 import br.com.ada.poo2.banco.exceptions.InvalidInputException;
 import br.com.ada.poo2.banco.controllers.operacoes.DeterminarPessoaFactoryController;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -15,6 +13,7 @@ public class DeterminarPessoaFactoryView {
     }
 
     public void iniciarDeterminarPessoaFactoryView() {
+
         try {
             exibirOpcoesTipoDePessoa();
             int tipoDePessoa = receberTipoDePessoa();
@@ -46,5 +45,3 @@ public class DeterminarPessoaFactoryView {
         determinarPessoaFactoryController.determinarTipoDePessoa(tipoDePessoa);
     }
 }
-
-
