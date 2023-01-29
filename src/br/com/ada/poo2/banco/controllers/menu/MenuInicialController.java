@@ -43,9 +43,13 @@ public class MenuInicialController {
     }
 
     public void acessarConta() {
-        logarUsuarioView.iniciarLogarUsuarioView();
-        escolherContaView.iniciarEscolherContaView();
-        menuOperacoesView.iniciarMenuOperacoesView();
+        try {
+            logarUsuarioView.iniciarLogarUsuarioView();
+            escolherContaView.iniciarEscolherContaView();
+            menuOperacoesView.iniciarMenuOperacoesView();
+        } catch(Exception e) {
+            System.out.println("tente novamente");
+        }
     }
 
     public void fechar() {

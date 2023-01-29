@@ -29,7 +29,6 @@ public class Aplicacao {
         aplicacao.iniciarMenuInicial();
     }
 
-
     public void setUpMenuOperacoesController() {
         ConsultarSaldoView consultarSaldoView = new ConsultarSaldoView();
         SacarView sacarView = new SacarView();
@@ -52,7 +51,6 @@ public class Aplicacao {
                 new DeterminarPessoaFactory()
         );
     }
-    
     public void setUpCadastrarUsuarioVIew() {
         cadastrarUsuarioView = new CadastrarUsuarioView(
                 new CadastrarUsuario(),
@@ -81,7 +79,9 @@ public class Aplicacao {
         menuInicialView = new MenuInicialView(
                 menuInicialController);
     }
-
+    public  MenuInicialView getMenuInicialView() {
+        return menuInicialView;
+    }
     public void iniciarMenuInicial() {
         menuInicialView.iniciarMenuInicial();
     }

@@ -5,6 +5,8 @@ import br.com.ada.poo2.banco.controllers.operacoes.Sacar;
 
 import java.util.Scanner;
 
+import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;
+
 
 public class SacarView {
 
@@ -21,8 +23,13 @@ public class SacarView {
     public double pedirValorDoSaque() {
         System.out.println("Informe o valor para saque: ");
         double valor = scanner.nextDouble();
-        return valor;
-        //TODO try-catch
+        if (banco.getContaLogada().getSaldo() < valor) {
+            System.out.println("Saldo em conta insuficiente.");
+            return pedirValorDoSaque();
+        } else {
+            return valor;
+        }
+        //TODO TRY-CATCH de imput
     }
 
     public void sacarValor(double valor) {

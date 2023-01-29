@@ -1,5 +1,6 @@
 package br.com.ada.poo2.banco.views;
 
+import br.com.ada.poo2.banco.controllers.menu.MenuOperacoesController;
 import br.com.ada.poo2.banco.exceptions.InvalidValueException;
 import br.com.ada.poo2.banco.controllers.operacoes.Depositar;
 import br.com.ada.poo2.banco.exceptions.UserDoesNotExistException;
@@ -22,6 +23,7 @@ public class DepositarView {
         opcaoDeposito = pedirOpcaoDeDeposito();
 
         try {
+            scanner.nextLine();
             contaDestino = determinarContaDestino(opcaoDeposito);
             valor = pedirValorDoDeposito();
             depositarValor(valor, contaDestino);
@@ -77,6 +79,7 @@ public class DepositarView {
         try{
             depositar.depositarContaUsuario(valor, contaDestino);
             System.out.println("Depósito efetuado com sucesso!");
+
         } catch (InvalidValueException e){
             System.out.println("O valor para esta operação deve ser maior que 0(zero)!");
             iniciarDepositar();
