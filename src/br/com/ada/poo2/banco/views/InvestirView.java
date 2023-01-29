@@ -25,7 +25,7 @@ public class InvestirView {
             valor = pedirValorInvestir();
             investirValor(valor);
         } catch (InvalidAccountException e){
-            System.out.println("Tipo de conta não permite investimento.");
+            System.out.println(e.getMessage());
         } catch(InsufficientFundsException e){
             System.out.println("Valor inválido! Saldo insuficiente.");
             iniciarInvestir();
