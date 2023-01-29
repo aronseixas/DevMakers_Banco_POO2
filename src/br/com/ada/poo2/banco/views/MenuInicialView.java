@@ -1,5 +1,6 @@
 package br.com.ada.poo2.banco.views;
 
+import br.com.ada.poo2.banco.applicacao.Aplicacao;
 import br.com.ada.poo2.banco.controllers.menu.MenuInicialController;
 
 import java.util.Scanner;
@@ -13,9 +14,15 @@ public class MenuInicialView {
     }
 
     public void iniciarMenuInicial() {
-        exibirOpcoes();
-        String opcaoMenu = receberOpcaoDoUsuario();
-        direcionarOperacao(opcaoMenu);
+        try {
+            exibirOpcoes();
+            int opcaoMenu = receberOpcaoDoUsuario();
+            direcionarOperacao(opcaoMenu);
+        } catch (Exception e) {
+            scanner.nextLine();
+            System.out.println("Opção inválida");
+            iniciarMenuInicial();
+        }
     }
 
     public void exibirOpcoes() {
@@ -28,21 +35,22 @@ public class MenuInicialView {
         System.out.print("Digite uma opção: ");
     }
 
-    public String receberOpcaoDoUsuario() {
-        return scanner.nextLine();
+    public int receberOpcaoDoUsuario() {
+        int opcao = scanner.nextInt();
+        return opcao;
     }
 
-    public void direcionarOperacao(String opcaoMenu) {
+    public void direcionarOperacao(int opcaoMenu) {
         switch (opcaoMenu) {
-            case "1":
+            case 1:
                 menuInicialController.abrirConta();
                 iniciarMenuInicial();
                 break;
-            case "2":
+            case 2:
                 menuInicialController.acessarConta();
                 iniciarMenuInicial();
                 break;
-            case "3":
+            case 3:
                 menuInicialController.fechar();
                 break;
             default:

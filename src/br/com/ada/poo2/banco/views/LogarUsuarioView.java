@@ -20,7 +20,6 @@ public class LogarUsuarioView {
     }
 
     public String pedirIdentificador() {
-        scanner.nextLine();
         System.out.println("Digite o CPF ou CNPJ:");
         String identificadorDigitado = scanner.nextLine();
         return identificadorDigitado;

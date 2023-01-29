@@ -79,9 +79,7 @@ public class Aplicacao {
         menuInicialView = new MenuInicialView(
                 menuInicialController);
     }
-    public  MenuInicialView getMenuInicialView() {
-        return menuInicialView;
-    }
+
     public void iniciarMenuInicial() {
         menuInicialView.iniciarMenuInicial();
     }

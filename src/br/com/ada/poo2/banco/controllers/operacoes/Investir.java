@@ -22,9 +22,9 @@ public class Investir {
     }
     //Deve retornar MenuOperacoes ao final
 
-    public void validarValorInvestir(double valorASerInvestido) {
+    public void validarValorInvestir(double valorASerInvestido) throws InsufficientFundsException {
         if (banco.getContaLogada().getSaldo() < valorASerInvestido) {
-            throw new IllegalArgumentException("Saldo insuficiente. Operação cancelada.");
+            throw new InsufficientFundsException();
         }
     }
 
