@@ -27,17 +27,17 @@ public class InvestirView {
         } catch (InvalidAccountException e){
             System.out.println(e.getMessage());
         } catch(InsufficientFundsException e){
-            System.out.println("Valor inválido! Saldo insuficiente.");
+            System.out.println(e.getMessage());
             iniciarInvestir();
         } catch (InvalidValueException e) {
-            System.out.println("Valor inválido!");
+            System.out.println(e.getMessage());
             iniciarInvestir();
         } catch (InputMismatchException e){
             System.out.println("Valor inválido");
             scanner.nextLine();
             iniciarInvestir();
         } catch (NoFundsException e){
-            System.out.println("Conta não possui saldo para investir.");
+            System.out.println(e.getMessage());
         }
     }
 

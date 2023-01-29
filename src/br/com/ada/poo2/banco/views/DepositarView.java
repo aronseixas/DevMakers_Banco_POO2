@@ -26,7 +26,7 @@ public class DepositarView {
             valor = pedirValorDoDeposito();
             depositarValor(valor, contaDestino);
         } catch (UserDoesNotExistException e)  {
-            System.out.println("Essa conta não existe.");
+            System.out.println(e.getMessage());
             iniciarDepositar();
         }
     }

@@ -42,13 +42,13 @@ public class TransferirView {
         try{
             transferir.transferirValor(valor, numeroContaDestino);
         } catch(InsufficientFundsException e){
-            System.out.println("Saldo insuficiente. Operação cancelada.");
+            System.out.println(e.getMessageSaqueTransferir());
             iniciarTransferir();
         } catch(InvalidValueException e){
-            System.out.println("Valor inválido!");
+            System.out.println(e.getMessageTransferir());
             iniciarTransferir();
         } catch(UserDoesNotExistException e){
-            System.out.println("Conta destino não encontrada. Operação cancelada.");
+            System.out.println(e.getMessageTransferir());
         }
     }
 }

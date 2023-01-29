@@ -35,7 +35,7 @@ public class DeterminarPessoaFactoryView {
         try {
             determinarPessoaFactory.determinarTipoDePessoa(tipoDePessoa);
         } catch (InvalidInputException e) {
-            System.out.println("Opção inválida!");
+            System.out.println(e.getMessage());
             iniciarDeterminarPessoaFactoryView();
         }
     }
