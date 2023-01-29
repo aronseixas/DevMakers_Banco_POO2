@@ -5,9 +5,9 @@ import br.com.ada.poo2.banco.models.enums.EPessoa;
 
 import java.util.List;
 
-public abstract class Pessoa {
+public abstract class Pessoa<T> {
     private String nome;
-    private List<Conta> contas;
+    private List<T> contas;
     private int senha;
     private EPessoa tipoDePessoa;
 
@@ -25,16 +25,12 @@ public abstract class Pessoa {
         this.nome = nome;
     }
 
-    public List<Conta> getContas() {
+    public List<T> getContas() {
         return contas;
     }
 
     public int getSenha() {
         return senha;
-    }
-
-    public EPessoa getTipoDePessoa() {
-        return tipoDePessoa;
     }
 
     abstract public String getIdentificador();
@@ -43,7 +39,7 @@ public abstract class Pessoa {
 
     abstract public String tipoDeIdentificador();
 
-    public void setContas(List<Conta> contas) {
+    public void setContas(List<T> contas) {
         this.contas = contas;
     }
 }
