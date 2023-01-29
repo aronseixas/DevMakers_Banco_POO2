@@ -1,6 +1,5 @@
 package br.com.ada.poo2.banco.views;
 
-import br.com.ada.poo2.banco.controllers.menu.MenuOperacoesController;
 import br.com.ada.poo2.banco.exceptions.InvalidValueException;
 import br.com.ada.poo2.banco.controllers.operacoes.Depositar;
 import br.com.ada.poo2.banco.exceptions.UserDoesNotExistException;
@@ -15,7 +14,7 @@ public class DepositarView {
     Depositar depositar = new Depositar();
 
     public void iniciarDepositar(){
-        String opcaoDeposito;
+        int opcaoDeposito;
         double valor;
         Conta contaDestino;
 
@@ -23,7 +22,6 @@ public class DepositarView {
         opcaoDeposito = pedirOpcaoDeDeposito();
 
         try {
-            scanner.nextLine();
             contaDestino = determinarContaDestino(opcaoDeposito);
             valor = pedirValorDoDeposito();
             depositarValor(valor, contaDestino);
@@ -38,18 +36,19 @@ public class DepositarView {
         System.out.println("Opção 2 - Depositar para outro cliente");
     }
 
-    public String pedirOpcaoDeDeposito() {
+    public int pedirOpcaoDeDeposito() {
         System.out.println("Digite a opção:");
-        return scanner.nextLine();
+        int opcao = scanner.nextInt();
+        return opcao;
     }
 
-    public Conta determinarContaDestino(String opcaoDeposito) {
+    public Conta determinarContaDestino(int opcaoDeposito) {
        Conta contaDestino = null;
         switch (opcaoDeposito) {
-            case "1" :
+            case 1 :
                 contaDestino = depositar.pegarContaDoProprioCLiente();
                 break;
-            case "2" :
+            case 2 :
                 String numeroContaDestino = pedirContaParaDeposito();
                 contaDestino = depositar.pegarContaDeOutroCliente(numeroContaDestino);
                 break;

@@ -18,7 +18,7 @@ public class MenuOperacoesView {
 
     public void iniciarMenuOperacoesView() {
         exibirOpcoes();
-        String opcaoMenu = receberOpcaoDoUsuario();
+        int opcaoMenu = receberOpcaoDoUsuario();
         direcionarOperacao(opcaoMenu);
     }
 
@@ -35,44 +35,45 @@ public class MenuOperacoesView {
         System.out.print("|-----------------------------------------------------|\n");
     }
 
-    public String receberOpcaoDoUsuario() {
+    public int receberOpcaoDoUsuario() {
         System.out.print("Digite uma opção: ");
-        return scanner.nextLine();
+        int opcao = scanner.nextInt();
+        return opcao;
     }
 
-    public void direcionarOperacao(String opcaoMenu) {
+    public void direcionarOperacao(int opcaoMenu) {
         switch (opcaoMenu) {
-            case "1":
+            case 1:
                 System.out.println("\nOpção Consultar Saldo \n");
                 menuOperacoesController.consultarSaldo();
                 iniciarMenuOperacoesView();
                 break;
-            case "2":
+            case 2:
                 System.out.println("\nOpção Sacar \n");
                 menuOperacoesController.sacar();
                 iniciarMenuOperacoesView();
                 break;
-            case "3":
+            case 3:
                 System.out.println("\nOpção Depositar\n");
                 menuOperacoesController.depositar();
                 iniciarMenuOperacoesView();
                 break;
-            case "4":
+            case 4:
                 System.out.println("\nOpção Investir\n");
                 menuOperacoesController.investir();
                 iniciarMenuOperacoesView();
                 break;
-            case "5":
+            case 5:
                 System.out.println("\nOpção Transferir\n");
                 menuOperacoesController.transferir();
                 iniciarMenuOperacoesView();
                 break;
-            case "6":
+            case 6:
                 System.out.println("\nOpção Escolher Conta\n");
                 menuOperacoesController.escolherConta();
                 iniciarMenuOperacoesView();
                 break;
-            case "7" :
+            case 7 :
                 break;
             default:
                 System.out.println("\nOpção Inválida!");
