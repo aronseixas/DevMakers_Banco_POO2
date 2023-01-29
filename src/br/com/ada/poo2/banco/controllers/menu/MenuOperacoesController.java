@@ -8,17 +8,20 @@ public class MenuOperacoesController {
     private DepositarView depositarView;
     private TransferirView transferirView;
     private InvestirView investirView;
-
+    private EscolherContaView escolherContaView;
     public MenuOperacoesController(ConsultarSaldoView consultarSaldoView,
                                    SacarView sacarView,
                                    DepositarView depositarView,
                                    TransferirView transferirView,
-                                   InvestirView investirView) {
+                                   InvestirView investirView,
+                                   EscolherContaView escolherContaView)
+    {
         this.consultarSaldoView = consultarSaldoView;
         this.sacarView = sacarView;
         this.depositarView = depositarView;
         this.transferirView = transferirView;
         this.investirView = investirView;
+        this.escolherContaView = escolherContaView;
     }
 
     public void consultarSaldo() {
@@ -27,10 +30,12 @@ public class MenuOperacoesController {
 
     public void sacar() {
         sacarView.iniciarSacar();
+        consultarSaldoView.iniciarConsultarSaldoView();
     }
 
     public void depositar(){
         depositarView.iniciarDepositar();
+        consultarSaldoView.iniciarConsultarSaldoView();
     }
 
     public void transferir(){
@@ -40,5 +45,7 @@ public class MenuOperacoesController {
     public void investir(){
         investirView.iniciarInvestir();
     }
+
+    public void escolherConta() {escolherContaView.iniciarEscolherContaView();}
 
 }

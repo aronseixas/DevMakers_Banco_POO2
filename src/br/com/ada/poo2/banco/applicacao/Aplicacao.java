@@ -11,15 +11,11 @@ import java.util.Scanner;
 
 public class Aplicacao {
     public static Banco banco = new Banco();
-
     private MenuInicialView menuInicialView;
     private MenuOperacoesView menuOperacoesView;
     private MenuInicialController menuInicialController;
-    
     private CadastrarUsuarioView cadastrarUsuarioView;
-    
-    private   DeterminarPessoaFactoryView determinarPessoaFactoryView;
-
+    private DeterminarPessoaFactoryView determinarPessoaFactoryView;
     private MenuOperacoesController menuOperacoesController;
 
     public static void main(String[] args) {
@@ -40,13 +36,15 @@ public class Aplicacao {
         DepositarView depositarView = new DepositarView();
         TransferirView transferirView = new TransferirView();
         InvestirView investirView = new InvestirView();
+        EscolherContaView escolherContaView = new EscolherContaView();
 
         menuOperacoesController = new MenuOperacoesController(
                 consultarSaldoView,
                 sacarView,
                 depositarView,
                 transferirView,
-                investirView
+                investirView,
+                escolherContaView
         );
     }
     public void setUpDeterminarFactoryView() {

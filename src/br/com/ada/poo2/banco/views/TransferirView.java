@@ -11,37 +11,36 @@ import java.util.Scanner;
 import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;
 
 public class TransferirView {
-
     Scanner scanner =  new Scanner(System.in);
-
     Transferir transferir = new Transferir();
 
     public void iniciarTransferir(){
         double valor;
-        Conta contaDestino;
+        String numeroContaDestino;
 
         valor = pedirValorTransferencia();
-        contaDestino = pedirContaDestino();
+        scanner.nextLine();
+        numeroContaDestino = pedirContaDestino();
 
-        transferirValor(valor, contaDestino);
+        transferirValor(valor, numeroContaDestino);
     }
 
-    private Conta pedirContaDestino(){
+    private String pedirContaDestino(){
         System.out.println("Informe o número da conta para transferência: ");
-        String numeroContaDestino = scanner.nextLine();
-        return banco.getMapaDeNumeroContaEConta().get(numeroContaDestino);
+        return scanner.nextLine();
     }
 
     private double pedirValorTransferencia() {
         System.out.println("Informe o valor a ser transferido: ");
+
         double valor = scanner.nextDouble();
         return valor;
         //TODO try-catch
     }
 
-    public void transferirValor(double valor, Conta contaDestino){
+    public void transferirValor(double valor, String numeroContaDestino){
         try{
-            transferir.transferirValor(valor, contaDestino);
+            transferir.transferirValor(valor, numeroContaDestino);
         } catch(InsufficientFundsException e){
             System.out.println("Saldo insuficiente. Operação cancelada.");
             iniciarTransferir();

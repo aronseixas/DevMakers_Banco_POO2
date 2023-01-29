@@ -7,14 +7,25 @@ import br.com.ada.poo2.banco.models.contas.Conta;
 import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;
 
 public class Transferir {
-    public void transferirValor(double valor, Conta contaDestino) {
+
+    public Conta pegarContaDestino(String numeroDaConta) {
+        Conta contaDestino = banco.getMapaDeNumeroContaEConta().get(numeroDaConta);
+
+        return contaDestino;
+    }
+    public void transferirValor(double valor, String numeroContaDestino) {
+        Conta contaDestino;
+        double taxa, saldoAtualDaConta, valorDescontadoDoSaldoAtualDaConta;
+
+        contaDestino = pegarContaDestino(numeroContaDestino);
         validarValorTransferencia(valor);
         validarContaDestino(contaDestino);
 
+
         //sacar
-        double taxa = banco.getContaLogada().getTaxas().taxa("TRANSFERENCIA");
-        double saldoAtualDaConta = banco.getContaLogada().getSaldo();
-        double valorDescontadoDoSaldoAtualDaConta = valor * (1 + taxa);
+        taxa = banco.getContaLogada().getTaxas().taxa("TRANSFERENCIA");
+        saldoAtualDaConta = banco.getContaLogada().getSaldo();
+        valorDescontadoDoSaldoAtualDaConta = valor * (1 + taxa);
         banco.getContaLogada().setSaldo(saldoAtualDaConta - valorDescontadoDoSaldoAtualDaConta);
 
         //depositar
@@ -22,7 +33,6 @@ public class Transferir {
         //banco.getMapaDeNumeroContaEConta().put(numeroContaDestino,contaDestino);
         //Ver como funciona o MAP e se a operação de fato modifica 1MAP ou todos e tb se ele só mexeu na conta da linha 18 desta classe
     }
-    //Deve retornar MenuOperacoes ao final
 
     public void validarValorTransferencia(double valor) throws InsufficientFundsException{
         if (banco.getContaLogada().getSaldo() < valor){

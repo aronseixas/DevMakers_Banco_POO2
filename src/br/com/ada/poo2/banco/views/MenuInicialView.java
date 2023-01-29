@@ -6,8 +6,6 @@ import java.util.Scanner;
 
 public class MenuInicialView {
     static Scanner scanner = new Scanner(System.in);
-
-
     private MenuInicialController menuInicialController;
 
     public MenuInicialView(MenuInicialController menuInicialController) {
@@ -38,9 +36,11 @@ public class MenuInicialView {
         switch (opcaoMenu) {
             case "1":
                 menuInicialController.abrirConta();
+                iniciarMenuInicial();
                 break;
             case "2":
                 menuInicialController.acessarConta();
+                iniciarMenuInicial();
                 break;
             case "3":
                 menuInicialController.fechar();
