@@ -21,10 +21,6 @@ public class Banco {
 //TODO Deixar pré-carregado uma Pessoa Física e uma Pessoa Jurídica com cada tipo de conta para testes
 
 
-    public void getListaDeContas() {
-
-    }
-
     public void setUsuarioLogado(Pessoa usuarioLogado) {
         this.usuarioLogado = usuarioLogado;
     }
