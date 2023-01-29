@@ -1,44 +1,40 @@
 package br.com.ada.poo2.banco.views;
 
 import br.com.ada.poo2.banco.exceptions.InsufficientFundsException;
-import br.com.ada.poo2.banco.controllers.operacoes.Sacar;
+import br.com.ada.poo2.banco.controllers.operacoes.SacarController;
+import br.com.ada.poo2.banco.exceptions.InvalidValueException;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
-
-import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;
 
 
 public class SacarView {
 
     Scanner scanner = new Scanner(System.in);
-    Sacar sacar = new Sacar();
+    SacarController sacarController = new SacarController();
 
     public void iniciarSacar() {
-        double valor;
+        try {
+            double valor;
 
-        valor = pedirValorDoSaque();
-        sacarValor(valor);
+            sacarController.validarSaldoPositivoConta();
+            valor = pedirValorDoSaque();
+            sacarController.sacarDaContaDoUsuario(valor);
+            System.out.println("Saque efetuado com sucesso!");
+        } catch (InputMismatchException e) {
+            System.out.println("Opção inválida");
+            scanner.nextLine();
+            iniciarSacar();
+        } catch (InvalidValueException | InsufficientFundsException e) {
+            System.out.println(e.getMessage());
+            scanner.nextLine();
+            iniciarSacar();
+        }
     }
 
     public double pedirValorDoSaque() {
         System.out.println("Informe o valor para saque: ");
-        double valor = scanner.nextDouble();
-        if (banco.getContaLogada().getSaldo() < valor) {
-            System.out.println("Saldo em conta insuficiente.");
-            return pedirValorDoSaque();
-        } else {
-            return valor;
-        }
-        //TODO TRY-CATCH de imput
+        return scanner.nextDouble();
     }
 
-    public void sacarValor(double valor) {
-        try {
-            sacar.sacarDaContaDoUsuario(valor);
-            System.out.println("Saque efetuado com sucesso!");
-        } catch (InsufficientFundsException e) {
-            System.out.println("Valor inválido!");
-            iniciarSacar();
-        }
-    }
 }

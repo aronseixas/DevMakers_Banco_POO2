@@ -9,5 +9,4 @@ import java.util.List;
 public interface IPessoaFactory {
     Pessoa criarUsuario(String nome, int senha);
     List<Conta> criarContasDoUsuario(String identificadorDoUsuario);
-
 }

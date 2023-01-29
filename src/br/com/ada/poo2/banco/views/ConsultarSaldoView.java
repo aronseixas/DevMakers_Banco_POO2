@@ -1,14 +1,12 @@
 package br.com.ada.poo2.banco.views;
 
-import br.com.ada.poo2.banco.controllers.operacoes.ConsultarSaldo;
+import br.com.ada.poo2.banco.controllers.operacoes.ConsultarSaldoController;
 
 public class ConsultarSaldoView {
-
-    ConsultarSaldo consultarSaldo;
-
+    ConsultarSaldoController consultarSaldoController;
     public void iniciarConsultarSaldoView() {
-        consultarSaldo = new ConsultarSaldo();
-        double saldo = consultarSaldo.pegarSaldoDaConta();
+        consultarSaldoController = new ConsultarSaldoController();
+        double saldo = consultarSaldoController.pegarSaldoDaConta();
         exibirSaldoDaConta(saldo);
     }
 

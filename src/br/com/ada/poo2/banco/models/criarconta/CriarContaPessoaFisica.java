@@ -9,7 +9,6 @@ import br.com.ada.poo2.banco.models.contas.ContaInvestimento;
 import br.com.ada.poo2.banco.models.contas.ContaPoupanca;
 import br.com.ada.poo2.banco.models.enums.EPessoa;
 
-import br.com.ada.poo2.banco.models.enums.ETipoConta;
 import br.com.ada.poo2.banco.models.rendimento.RendimentoPF;
 import br.com.ada.poo2.banco.models.taxas.TaxasPF;
 
@@ -22,8 +21,8 @@ public class CriarContaPessoaFisica implements ICriarConta {
     Conta contaCorrente, contaPoupanca, contaInvestimento;
     List<Conta> listaDeContas = new ArrayList<>();
     private final EPessoa TIPO_DE_PESSOA = EPessoa.FISICA;
-    private final IRendimento TAXA_DE_RENDIMENTO = new RendimentoPF();
-    private final ITaxas TAXA_DE_OPERACAO = new TaxasPF();
+    private IRendimento taxaDeRendimento = new RendimentoPF();
+    private ITaxas taxaDeOperacao = new TaxasPF();
     @Override
     public List<Conta> criarContas(String identificadorDoUsuario) {
         String CPF = identificadorDoUsuario;
@@ -38,13 +37,11 @@ public class CriarContaPessoaFisica implements ICriarConta {
         contaCorrente = new ContaCorrente(
                 numeroContaCorrente,
                 0,
-                TAXA_DE_RENDIMENTO,
-                TAXA_DE_OPERACAO,
+                taxaDeRendimento,
+                taxaDeOperacao,
                 TIPO_DE_PESSOA);
         listaDeContas.add(contaCorrente);
         banco.getMapaDeNumeroContaEConta().put(numeroContaCorrente, contaCorrente);
-
-
     }
 
     private void criarContaPoupanca(String CPF) {
@@ -52,8 +49,8 @@ public class CriarContaPessoaFisica implements ICriarConta {
         contaPoupanca = new ContaPoupanca(
                 numeroContaPoupanca,
                 0,
-                TAXA_DE_RENDIMENTO,
-                TAXA_DE_OPERACAO,
+                taxaDeRendimento,
+                taxaDeOperacao,
                 TIPO_DE_PESSOA);
         listaDeContas.add(contaPoupanca);
         banco.getMapaDeNumeroContaEConta().put(numeroContaPoupanca, contaPoupanca);
@@ -64,11 +61,10 @@ public class CriarContaPessoaFisica implements ICriarConta {
         contaInvestimento = new ContaInvestimento(
                 numeroContaInvestimento,
                 0,
-                TAXA_DE_RENDIMENTO,
-                TAXA_DE_OPERACAO,
+                taxaDeRendimento,
+                taxaDeOperacao,
                 TIPO_DE_PESSOA);
         listaDeContas.add(contaInvestimento);
         banco.getMapaDeNumeroContaEConta().put(numeroContaInvestimento, contaInvestimento);
     }
-
 }

@@ -1,14 +1,17 @@
 package br.com.ada.poo2.banco.controllers.menu;
 
-import br.com.ada.poo2.banco.controllers.operacoes.LogarUsuario;
-import br.com.ada.poo2.banco.models.pessoas.Pessoa;
+import br.com.ada.poo2.banco.controllers.operacoes.LogarUsuarioController;
+import br.com.ada.poo2.banco.exceptions.InvalidPasswordException;
+import br.com.ada.poo2.banco.exceptions.UserDoesNotExistException;
 import br.com.ada.poo2.banco.views.*;
+
+import java.util.InputMismatchException;
 
 public class MenuInicialController {
 
     private EscolherContaView escolherContaView;
 
-    private LogarUsuario logarUsuario;
+    private LogarUsuarioController logarUsuarioController;
 
     private LogarUsuarioView logarUsuarioView;
 
@@ -20,13 +23,13 @@ public class MenuInicialController {
 
     public MenuInicialController(
             EscolherContaView escolherContaView,
-            LogarUsuario logarUsuario,
+            LogarUsuarioController logarUsuarioController,
             LogarUsuarioView logarUsuarioView,
             MenuOperacoesView menuOperacoesView,
             CadastrarUsuarioView cadastrarUsuarioView,
             DeterminarPessoaFactoryView determinarPessoaFactoryView) {
         this.escolherContaView = escolherContaView;
-        this.logarUsuario = logarUsuario;
+        this.logarUsuarioController = logarUsuarioController;
         this.logarUsuarioView = logarUsuarioView;
         this.menuOperacoesView = menuOperacoesView;
         this.cadastrarUsuarioView = cadastrarUsuarioView;
@@ -35,9 +38,8 @@ public class MenuInicialController {
 
     public void abrirConta() {
         determinarPessoaFactoryView.iniciarDeterminarPessoaFactoryView();
-        Pessoa novoUsuario = cadastrarUsuarioView.iniciarCadastrarUsuarioView();
-        logarUsuario.logarUsarioNovo(novoUsuario);
-        //TODO Views não podem reotrnar nada.
+        cadastrarUsuarioView.iniciarCadastrarUsuarioView();
+        logarUsuarioController.logarUsarioNovo();
         escolherContaView.iniciarEscolherContaView();
         menuOperacoesView.iniciarMenuOperacoesView();
     }
@@ -47,8 +49,10 @@ public class MenuInicialController {
             logarUsuarioView.iniciarLogarUsuarioView();
             escolherContaView.iniciarEscolherContaView();
             menuOperacoesView.iniciarMenuOperacoesView();
-        } catch(Exception e) {
-            System.out.println("tente novamente");
+        } catch (InputMismatchException e) {
+            System.out.println("Usuário ou senha inválidos!");
+        } catch (UserDoesNotExistException | InvalidPasswordException e) {
+            System.out.println(e.getMessage());
         }
     }
 

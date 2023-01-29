@@ -7,32 +7,30 @@ import java.util.List;
 
 import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;
 
-public class CriarConta {
-    Pessoa usuarioCadastrado;
+public class CriarContaController {
+    Pessoa usuario;
 
-    public void iniciarCriarConta(Pessoa usuarioCadastrado) {
-
+    public void iniciarCriarConta() {
         List<Conta> listaDeContasDoUsuario;
-        this.usuarioCadastrado = usuarioCadastrado;
-
+        this.usuario = banco.getUsuarioCadastrado();
         listaDeContasDoUsuario = criarConta();
         adicionarContaAoUsuario(listaDeContasDoUsuario);
         associarNumeroDaContaAoUsuarioNoBanco(listaDeContasDoUsuario);
     }
 
     private List<Conta> criarConta() {
-        String identificadorDoUsuario = usuarioCadastrado.getIdentificador();
+        String identificadorDoUsuario = usuario.getIdentificador();
         IPessoaFactory pessoaFactory = banco.getPessoaFactory();
         return pessoaFactory.criarContasDoUsuario(identificadorDoUsuario);
     }
 
     private void adicionarContaAoUsuario(List<Conta> listaDeContasDoUsuario) {
-        usuarioCadastrado.setContas(listaDeContasDoUsuario);
+        usuario.setContas(listaDeContasDoUsuario);
     }
 
     private void associarNumeroDaContaAoUsuarioNoBanco(List<Conta> listaDeContasDoUsuario) {
         for (Conta conta: listaDeContasDoUsuario) {
-            banco.getMapaDeContas().put(conta.getNumero(), usuarioCadastrado);
+            banco.getMapaDeContas().put(conta.getNumero(), usuario);
         }
     }
 }

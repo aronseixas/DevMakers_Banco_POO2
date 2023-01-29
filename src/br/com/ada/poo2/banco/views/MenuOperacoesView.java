@@ -2,12 +2,12 @@ package br.com.ada.poo2.banco.views;
 
 import br.com.ada.poo2.banco.controllers.menu.MenuOperacoesController;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MenuOperacoesView {
 
     //TODO apresentar nome de usuário e qual a conta logada;
-//TODO limitas as operações ao tipo de conta;
 
     Scanner scanner = new Scanner(System.in);
     private MenuOperacoesController menuOperacoesController;
@@ -17,9 +17,15 @@ public class MenuOperacoesView {
     }
 
     public void iniciarMenuOperacoesView() {
-        exibirOpcoes();
-        int opcaoMenu = receberOpcaoDoUsuario();
-        direcionarOperacao(opcaoMenu);
+        try {
+            exibirOpcoes();
+            int opcaoMenu = receberOpcaoDoUsuario();
+            scanner.nextLine();
+            direcionarOperacao(opcaoMenu);
+        } catch (InputMismatchException e) {
+            System.out.println("Opção inválida");
+            scanner.nextLine();
+        }
     }
 
     public void exibirOpcoes() {
@@ -74,6 +80,7 @@ public class MenuOperacoesView {
                 iniciarMenuOperacoesView();
                 break;
             case 7 :
+                menuOperacoesController.deslogar();
                 break;
             default:
                 System.out.println("\nOpção Inválida!");

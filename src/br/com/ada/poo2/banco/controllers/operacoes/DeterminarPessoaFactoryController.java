@@ -7,14 +7,14 @@ import br.com.ada.poo2.banco.models.factories.PessoaJuridicaFactory;
 
 import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;
 
-public class DeterminarPessoaFactory {
+public class DeterminarPessoaFactoryController {
     private IPessoaFactory pessoaFactory;
-    public void determinarTipoDePessoa(String inputTipoDePessoa) throws InvalidInputException {
-        switch (inputTipoDePessoa) {
-            case "1" :
+    public void determinarTipoDePessoa(int tipoDePessoa) throws InvalidInputException {
+        switch (tipoDePessoa) {
+            case 1 :
                 pessoaFactory = new PessoaFisicaFactory();
                 break;
-            case "2" :
+            case 2 :
                 pessoaFactory = new PessoaJuridicaFactory();
                 break;
             default:

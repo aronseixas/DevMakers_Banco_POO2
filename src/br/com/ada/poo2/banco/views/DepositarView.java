@@ -1,32 +1,41 @@
 package br.com.ada.poo2.banco.views;
 
+import br.com.ada.poo2.banco.exceptions.InvalidInputException;
 import br.com.ada.poo2.banco.exceptions.InvalidValueException;
-import br.com.ada.poo2.banco.controllers.operacoes.Depositar;
+import br.com.ada.poo2.banco.controllers.operacoes.DepositarController;
 import br.com.ada.poo2.banco.exceptions.UserDoesNotExistException;
-import br.com.ada.poo2.banco.models.contas.Conta;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class DepositarView {
 
     Scanner scanner = new Scanner(System.in);
 
-    Depositar depositar = new Depositar();
+    boolean usuarioDepositouNaPropriaConta;
+    DepositarController depositarController = new DepositarController();
 
     public void iniciarDepositar(){
-        int opcaoDeposito;
-        double valor;
-        Conta contaDestino;
-
-        exibirOpcoesDeDeposito();
-        opcaoDeposito = pedirOpcaoDeDeposito();
-
         try {
-            contaDestino = determinarContaDestino(opcaoDeposito);
+            int opcaoDeposito;
+            double valor;
+
+            exibirOpcoesDeDeposito();
+            opcaoDeposito = pedirOpcaoDeDeposito();
+            scanner.nextLine();
+            setUsuarioDepositouNaPropriaConta(opcaoDeposito);
+            String numeroContaDestino = determinarNumeroContaDestino(opcaoDeposito);
+            depositarController.determinarContaDestino(opcaoDeposito, numeroContaDestino);
             valor = pedirValorDoDeposito();
-            depositarValor(valor, contaDestino);
-        } catch (UserDoesNotExistException e)  {
-            System.out.println("Essa conta não existe.");
+            depositarController.depositarContaUsuario(valor);
+            System.out.println("Depósito efetuado com sucesso!");
+        } catch (UserDoesNotExistException | InvalidValueException | InvalidInputException e)  {
+            System.out.println(e.getMessage());
+            scanner.nextLine();
+            iniciarDepositar();
+        } catch (InputMismatchException e) {
+            System.out.println("Opção inválida");
+            scanner.nextLine();
             iniciarDepositar();
         }
     }
@@ -38,50 +47,37 @@ public class DepositarView {
 
     public int pedirOpcaoDeDeposito() {
         System.out.println("Digite a opção:");
-        int opcao = scanner.nextInt();
-        return opcao;
+        return scanner.nextInt();
     }
 
-    public Conta determinarContaDestino(int opcaoDeposito) {
-       Conta contaDestino = null;
-        switch (opcaoDeposito) {
-            case 1 :
-                contaDestino = depositar.pegarContaDoProprioCLiente();
-                break;
-            case 2 :
-                String numeroContaDestino = pedirContaParaDeposito();
-                contaDestino = depositar.pegarContaDeOutroCliente(numeroContaDestino);
-                break;
-            default:
-                System.out.println("opção inválida");
-                iniciarDepositar();
+    public String determinarNumeroContaDestino(int opcaoDeposito) {
+        String numeroContaDestino = null;
+        if (opcaoDeposito == 2) {
+            numeroContaDestino = pedirContaParaDeposito();
         }
-        return contaDestino;
+        return numeroContaDestino;
     }
 
 
     public String pedirContaParaDeposito(){
         System.out.println("Informe a conta para depósito: ");
-        String numeroConta = scanner.nextLine();
-        return numeroConta;
-        //TODO try-catch
+        return scanner.nextLine();
     }
 
     public double pedirValorDoDeposito(){
         System.out.println("Informe o valor para depósito: ");
-        double valor = scanner.nextDouble();
-        return valor;
-        //TODO try-catch
+        return scanner.nextDouble();
     }
 
-    public void depositarValor(double valor, Conta contaDestino){
-        try{
-            depositar.depositarContaUsuario(valor, contaDestino);
-            System.out.println("Depósito efetuado com sucesso!");
-
-        } catch (InvalidValueException e){
-            System.out.println("O valor para esta operação deve ser maior que 0(zero)!");
-            iniciarDepositar();
+    public void setUsuarioDepositouNaPropriaConta(int opcaoDeposito) {
+        if (opcaoDeposito == 1) {
+            usuarioDepositouNaPropriaConta = true;
+        } else {
+            usuarioDepositouNaPropriaConta = false;
         }
+    }
+
+    public boolean getUsuarioDepositouNaPropriaConta() {
+        return this.usuarioDepositouNaPropriaConta;
     }
 }

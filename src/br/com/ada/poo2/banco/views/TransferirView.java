@@ -1,28 +1,34 @@
 package br.com.ada.poo2.banco.views;
 
 import br.com.ada.poo2.banco.exceptions.InsufficientFundsException;
-import br.com.ada.poo2.banco.exceptions.InvalidValueException;
 import br.com.ada.poo2.banco.exceptions.UserDoesNotExistException;
-import br.com.ada.poo2.banco.controllers.operacoes.Transferir;
-import br.com.ada.poo2.banco.models.contas.Conta;
+import br.com.ada.poo2.banco.controllers.operacoes.TransferirController;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
-
-import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;
 
 public class TransferirView {
     Scanner scanner =  new Scanner(System.in);
-    Transferir transferir = new Transferir();
+    TransferirController transferirController = new TransferirController();
 
     public void iniciarTransferir(){
-        double valor;
-        String numeroContaDestino;
+        try {
+            double valor;
+            String numeroContaDestino;
 
-        valor = pedirValorTransferencia();
-        scanner.nextLine();
-        numeroContaDestino = pedirContaDestino();
-
-        transferirValor(valor, numeroContaDestino);
+            transferirController.validarSaldoPositivoConta();
+            numeroContaDestino = pedirContaDestino();
+            valor = pedirValorTransferencia();
+            transferirController.transferirValor(valor, numeroContaDestino);
+        } catch (InputMismatchException e) {
+            System.out.println("Opção Inválida");
+            scanner.nextLine();
+            iniciarTransferir();
+        } catch (InsufficientFundsException | UserDoesNotExistException e) {
+            System.out.println(e.getMessage());
+            scanner.nextLine();
+            iniciarTransferir();
+        }
     }
 
     private String pedirContaDestino(){
@@ -32,23 +38,7 @@ public class TransferirView {
 
     private double pedirValorTransferencia() {
         System.out.println("Informe o valor a ser transferido: ");
-
-        double valor = scanner.nextDouble();
-        return valor;
-        //TODO try-catch
+        return scanner.nextDouble();
     }
 
-    public void transferirValor(double valor, String numeroContaDestino){
-        try{
-            transferir.transferirValor(valor, numeroContaDestino);
-        } catch(InsufficientFundsException e){
-            System.out.println("Saldo insuficiente. Operação cancelada.");
-            iniciarTransferir();
-        } catch(InvalidValueException e){
-            System.out.println("Valor inválido!");
-            iniciarTransferir();
-        } catch(UserDoesNotExistException e){
-            System.out.println("Conta destino não encontrada. Operação cancelada.");
-        }
-    }
 }

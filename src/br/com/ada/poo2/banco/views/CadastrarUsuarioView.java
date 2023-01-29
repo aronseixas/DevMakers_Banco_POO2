@@ -1,37 +1,46 @@
 package br.com.ada.poo2.banco.views;
 
-import br.com.ada.poo2.banco.controllers.operacoes.CadastrarUsuario;
-import br.com.ada.poo2.banco.controllers.operacoes.CriarConta;
-import br.com.ada.poo2.banco.controllers.operacoes.DeterminarPessoaFactory;
-import br.com.ada.poo2.banco.models.pessoas.Pessoa;
+import br.com.ada.poo2.banco.controllers.operacoes.CadastrarUsuarioController;
+import br.com.ada.poo2.banco.controllers.operacoes.CriarContaController;
+import br.com.ada.poo2.banco.exceptions.UserAlreadyExistsException;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CadastrarUsuarioView {
     Scanner scanner = new Scanner(System.in);
-    private CadastrarUsuario cadastrarUsuario;
-    private CriarConta criarConta;
+    private CadastrarUsuarioController cadastrarUsuarioController;
+    private CriarContaController criarContaController;
 
     public CadastrarUsuarioView(
-            CadastrarUsuario cadastrarUsuario,
-            CriarConta criarConta) {
-        this.cadastrarUsuario = cadastrarUsuario;
-        this.criarConta = criarConta;
+            CadastrarUsuarioController cadastrarUsuarioController,
+            CriarContaController criarContaController) {
+        this.cadastrarUsuarioController = cadastrarUsuarioController;
+        this.criarContaController = criarContaController;
     }
-    public Pessoa iniciarCadastrarUsuarioView() {
+    public void iniciarCadastrarUsuarioView() {
         String nome, identificador;
         int senha;
-        Pessoa usuario;
 
-        nome = pedirNomeDoUsuario();
-        senha = pedirSenhaDoUsuario();
-        usuario = cadastrarUsuario.criarUsuario(nome, senha);
-        exibirOpcoesIdentificadorDoUsuario(usuario);
-        identificador = pedirIdentificadorDoUsuario();
-        cadastrarUsuario.adicionarIdentificadorAoUsuario(identificador, usuario);
-        cadastrarUsuario.adicionarUsuarioAoBanco(usuario);
-        criarConta.iniciarCriarConta(usuario);
-        return usuario;
+        try {
+            nome = pedirNomeDoUsuario();
+            senha = pedirSenhaDoUsuario();
+            cadastrarUsuarioController.criarUsuario(nome, senha);
+            exibirOpcoesIdentificadorDoUsuario();
+            scanner.nextLine();
+            identificador = pedirIdentificadorDoUsuario();
+            cadastrarUsuarioController.adicionarIdentificadorAoUsuario(identificador);
+            cadastrarUsuarioController.adicionarUsuarioAoBanco();
+            criarContaController.iniciarCriarConta();
+        } catch (InputMismatchException e) {
+            System.out.println("Opção inválida");
+            scanner.nextLine();
+            iniciarCadastrarUsuarioView();
+        } catch (UserAlreadyExistsException e) {
+            System.out.println(e.getMessage());
+            scanner.nextLine();
+            iniciarCadastrarUsuarioView();
+        }
     }
     public String pedirNomeDoUsuario() {
         System.out.println("Digite o nome:");
@@ -41,21 +50,17 @@ public class CadastrarUsuarioView {
 
     private int pedirSenhaDoUsuario() {
         System.out.println("Digite a senha (somente números):");
-        return Integer.parseInt(scanner.nextLine());
+        return scanner.nextInt();
         //TODO validar quantidade mínima de caracteres
     }
 
-    public void exibirOpcoesIdentificadorDoUsuario(Pessoa usuario) {
-        String tipoDeIdentificador = usuario.tipoDeIdentificador();
+    public void exibirOpcoesIdentificadorDoUsuario() {
+        String tipoDeIdentificador = cadastrarUsuarioController.pegarTipoIdentificadorUsuario();
         System.out.println("Digite o seu " + tipoDeIdentificador + ":");
-        //TODO View com acesso direto ao Model
     }
 
     public String pedirIdentificadorDoUsuario() {
         return scanner.nextLine();
-
         // TODO validar  tamanho mínimo de CPF e de CNPJ
-        // TODO validar se já há contas abertas naquele CPF/CNPJ
     }
-
 }

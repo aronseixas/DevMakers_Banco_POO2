@@ -15,6 +15,8 @@ public class Banco {
     Pessoa usuarioLogado;
     Conta contaLogada;
 
+    Pessoa usuarioCadastrado;
+
     IPessoaFactory pessoaFactory;
 
 
@@ -57,4 +59,11 @@ public class Banco {
         return mapaDeNumeroContaEConta;
     }
 
+    public Pessoa getUsuarioCadastrado() {
+        return usuarioCadastrado;
+    }
+
+    public void setUsuarioCadastrado(Pessoa usuarioCadastrado) {
+        this.usuarioCadastrado = usuarioCadastrado;
+    }
 }

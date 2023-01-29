@@ -1,6 +1,5 @@
 package br.com.ada.poo2.banco.views;
 
-import br.com.ada.poo2.banco.applicacao.Aplicacao;
 import br.com.ada.poo2.banco.controllers.menu.MenuInicialController;
 
 import java.util.Scanner;
@@ -17,6 +16,7 @@ public class MenuInicialView {
         try {
             exibirOpcoes();
             int opcaoMenu = receberOpcaoDoUsuario();
+            scanner.nextLine();
             direcionarOperacao(opcaoMenu);
         } catch (Exception e) {
             scanner.nextLine();
@@ -43,10 +43,12 @@ public class MenuInicialView {
     public void direcionarOperacao(int opcaoMenu) {
         switch (opcaoMenu) {
             case 1:
+                System.out.println("\n|               Abrir uma nova conta           |\n");
                 menuInicialController.abrirConta();
                 iniciarMenuInicial();
                 break;
             case 2:
+                System.out.println("\n|              Acessar sua conta           |\n");
                 menuInicialController.acessarConta();
                 iniciarMenuInicial();
                 break;

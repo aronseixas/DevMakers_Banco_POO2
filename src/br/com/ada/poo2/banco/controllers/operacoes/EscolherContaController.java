@@ -8,7 +8,7 @@ import java.util.List;
 
 import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;
 
-public class EscolherConta {
+public class EscolherContaController {
 
 
     public int pegarQtddDeContasDoUsuario() {
@@ -32,5 +32,4 @@ public class EscolherConta {
         Conta contaEscolhida = pegarConta(index);
         banco.setContaLogada(contaEscolhida);
     }
-
 }

@@ -1,5 +1,6 @@
 package br.com.ada.poo2.banco.controllers.operacoes;
 
+import br.com.ada.poo2.banco.exceptions.InvalidInputException;
 import br.com.ada.poo2.banco.exceptions.InvalidValueException;
 import br.com.ada.poo2.banco.exceptions.UserDoesNotExistException;
 import br.com.ada.poo2.banco.models.contas.Conta;
@@ -7,23 +8,28 @@ import br.com.ada.poo2.banco.models.enums.ETipoConta;
 
 import static br.com.ada.poo2.banco.applicacao.Aplicacao.banco;
 
-public class Depositar {
+public class DepositarController {
     Conta contaDestino;
-    public Conta pegarContaDeOutroCliente(String numeroConta) {
-        contaDestino = banco.getMapaDeNumeroContaEConta().get(numeroConta);
-        validarContaDestino(contaDestino);
-        return contaDestino;
+
+    public void determinarContaDestino(int opcaoDeposito, String numeroContaDestino) throws InvalidInputException {
+        switch (opcaoDeposito) {
+            case 1 :
+                contaDestino = banco.getContaLogada();
+                break;
+            case 2 :
+                contaDestino = banco.getMapaDeNumeroContaEConta().get(numeroContaDestino);
+                validarContaDestino(contaDestino);
+                break;
+            default:
+                throw new InvalidInputException();
+        }
     }
 
-    public Conta pegarContaDoProprioCLiente() {
-        contaDestino = banco.getContaLogada();
-        return contaDestino;
-    }
 
-    public void depositarContaUsuario(double valor, Conta contaDestino) {
+    public void depositarContaUsuario(double valor) {
         double rendimento, saldoAtualDaConta;
-
         validarValorDeposito(valor);
+
         ETipoConta tipoContaLogada = contaDestino.getTipoConta();
         rendimento = contaDestino.getRendimento().taxaRendimentoDeposito(tipoContaLogada);
         saldoAtualDaConta = contaDestino.getSaldo();
@@ -42,4 +48,3 @@ public class Depositar {
         }
     }
 }
-    //TODO testar colocar tudo no try catch.
