@@ -42,12 +42,12 @@ public class MenuInicialView {
     public void direcionarOperacao(int opcaoMenu) {
         switch (opcaoMenu) {
             case 1:
-                System.out.println("\n|               Abrir uma nova conta           |\n");
+                System.out.println("\nOpção Abrir Conta\n");
                 menuInicialController.abrirConta();
                 iniciarMenuInicial();
                 break;
             case 2:
-                System.out.println("\n|              Acessar sua conta           |\n");
+                System.out.println("\nOpção Acessar Conta\n");
                 menuInicialController.acessarConta();
                 iniciarMenuInicial();
                 break;
