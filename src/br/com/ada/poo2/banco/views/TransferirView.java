@@ -19,6 +19,7 @@ public class TransferirView {
             numeroContaDestino = pedirContaDestino();
             valor = pedirValorTransferencia();
             transferirController.transferirValor(valor, numeroContaDestino);
+            System.out.println("Transferência realizada com sucesso!");
         } catch (InputMismatchException e) {
             System.out.println("Opção Inválida");
             scanner.nextLine();

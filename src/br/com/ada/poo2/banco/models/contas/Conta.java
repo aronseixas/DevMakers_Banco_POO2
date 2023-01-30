@@ -5,7 +5,7 @@ import br.com.ada.poo2.banco.interfaces.ITaxas;
 import br.com.ada.poo2.banco.models.enums.EPessoa;
 import br.com.ada.poo2.banco.models.enums.ETipoConta;
 
-public  class Conta implements IConta {
+public  class Conta<T> implements IConta {
     private ETipoConta tipoConta;
     private String numero;
     protected double saldo;

@@ -29,7 +29,7 @@ public class DepositarController {
         ETipoConta tipoContaLogada = contaDestino.getTipoConta();
         rendimento = contaDestino.getRendimento().taxaRendimentoDeposito(tipoContaLogada);
         saldoAtualDaConta = contaDestino.getSaldo();
-        contaDestino.setSaldo(saldoAtualDaConta + valor * (1 + rendimento));
+        contaDestino.setSaldo((saldoAtualDaConta + valor) * (1 + rendimento));
     }
 
     public void validarValorDeposito(double valor) throws InvalidValueException{
